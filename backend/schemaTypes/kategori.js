@@ -1,13 +1,14 @@
 import {defineField, defineType} from 'sanity'
 
 export const kategori = defineType({
-  name: 'Kategori',
-  title: 'Kategori',
+  name: 'kategori',
+  title: 'kategori',
   type: 'document',
   fields: [
     defineField({
       name: 'name',
       type: 'string',
+      title: "kategorinavn"
     }),
   ],
 })
