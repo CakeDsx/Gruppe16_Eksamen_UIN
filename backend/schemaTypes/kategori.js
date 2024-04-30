@@ -1,4 +1,4 @@
-export const kategori = {
+export default {
     name: 'kategori',
     title: 'kategori',
     type: 'document',
