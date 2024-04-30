@@ -1,12 +1,13 @@
-export default {
-    title: "Kategori",
-    name: "kategori",
-    type: "document",
-    fields: [
-        {
-            name: "title",
-            type: "string",
-            title: "Kategorinavn"
-        }
-    ]
-}
+import {defineField, defineType} from 'sanity'
+
+export const kategori = defineType({
+  name: 'Kategori',
+  title: 'Kategori',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'name',
+      type: 'string',
+    }),
+  ],
+})
