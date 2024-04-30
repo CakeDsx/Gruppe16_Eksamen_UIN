@@ -5,7 +5,8 @@ export const eventType = {
   fields: [
     {
       name: 'name',
-      type: 'string',
+      title: 'kake',
+      type: 'string'
     },
     {
       name: "mengde",

@@ -1,15 +1,17 @@
-
-
-export default {
-    title: "kategori",
-    name: "kategori",
-    type: "document",
+export const kategori = {
+    name: 'kategori',
+    title: 'kategori',
+    type: 'document',
     fields: [
-        {
-            name: "title",
-            type: "string",
-            title: "kategorinavn"
-        }
-    ]
-}
-
+      {
+        name: 'name',
+        title: 'kake',
+        type: 'string'
+      },
+      {
+        name: "mengde",
+        title: "mengde/antall",
+        type: "string"
+    }
+    ],
+  }
