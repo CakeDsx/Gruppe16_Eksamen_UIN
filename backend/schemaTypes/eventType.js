@@ -1,4 +1,4 @@
-export const eventType = {
+export default {
   name: 'moviecard',
   title: 'moviecard',
   type: 'document',
