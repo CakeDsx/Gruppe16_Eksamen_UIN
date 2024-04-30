@@ -1,4 +1,4 @@
 import {eventType} from './eventType'
-import { kategori } from './kategori'
+//import { kategori } from './kategori'
 
-export const schemaTypes = [eventType, kategori]
+export const schemaTypes = [eventType]
