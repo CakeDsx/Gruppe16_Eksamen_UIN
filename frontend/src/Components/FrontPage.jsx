@@ -22,7 +22,7 @@ console.log(movie)
 return(
     <>
     <h1>WHAT TO SEE?</h1>
-    <Navbar/>
+    
     <ul>
         {movie?.map((movie, index) => <li key={index}>
             <Link to={movie._id}>{movie.title}</Link>

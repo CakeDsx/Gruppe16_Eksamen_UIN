@@ -21,14 +21,16 @@ console.log(movieList)
 
 return(
     <nav>
+
         <ul>
-            {movieList?.map((item, i) => 
-        <li key={i+"cat"}>
-        <Link to={"/movies/"+item.catslug}
-        onClick={() => setActive(item._id)}
-        className={active === item._id ? "active" : null}>{item.movietitle}</Link>
-        </li>)}
+            <li>
+                <Link to="/FrontPage">FrontPage</Link>
+            </li>
+            <li>
+                <Link to="/Home">Home</Link>
+            </li>
         </ul>
+       
     </nav>
 )
 }
