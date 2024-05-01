@@ -1,9 +1,15 @@
+import FrontPage from './Components/FrontPage'
 import './App.css'
 
 function App() {
 
   return (
-    <h1>Hei</h1>
+    <element>
+      <h1>Movies To See</h1>
+      <Routes>
+        <Route path="/" index element={ Frontpage />} />
+      </Routes>
+    </element>
   )
 }
 
