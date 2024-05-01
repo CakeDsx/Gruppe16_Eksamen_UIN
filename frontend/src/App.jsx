@@ -7,7 +7,7 @@ function App() {
     <element>
       <h1>Movies To See</h1>
       <Routes>
-        <Route path="/" index element={ Frontpage />} />
+        <Route path="/" element = { <FrontPage /> }/>
       </Routes>
     </element>
   )
