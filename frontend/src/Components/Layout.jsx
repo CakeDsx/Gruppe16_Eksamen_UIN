@@ -7,7 +7,7 @@ export default function Layout({children}){
         <div id="container">
             <Header/>
             <Navbar/>
-            <MovieCard/>
+            
             {children}
 
         </div>
