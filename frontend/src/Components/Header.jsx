@@ -12,6 +12,7 @@ export default function Header(){
     return(
         <header>
             <button id="favtoggle" onClick={favClick}>
+                Favoritas
             </button>
         </header>
     )
