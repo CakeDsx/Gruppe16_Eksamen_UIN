@@ -4,7 +4,7 @@ export const client = createClient({
     projectId: "o9tavwx2",
     dataset: "production",
     useCdn: false,
-    apiVersion: "2022-03-07",
+    apiVersion: "v2022-03-07",
 })
 
 export const movieClient = createClient({
