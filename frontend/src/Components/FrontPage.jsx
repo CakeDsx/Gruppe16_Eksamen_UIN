@@ -7,7 +7,7 @@ export default function FrontPage(){
 
     async function getMovies(){
         const data = await fetchAllMovies()
-        setShows(data)
+        setMovie(data)
     }
 }
 
