@@ -14,7 +14,7 @@ export default function Home(){
         getAllMovies
     }, [])
 
-    console.log(moveis)
+    console.log(movies)
 
     return (
     <main>

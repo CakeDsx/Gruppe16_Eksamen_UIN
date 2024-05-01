@@ -1,17 +1,14 @@
-// import { client } from "./client"
+import { createClient } from '@sanity/client'
 
-// // export async function fetchMovies() {
-// //     const data = await client.fetch(`*[_type == "movies"]{
-// //         //sette inn keys(?) her?
-// //     }`)
-// //     return data
-// // }
+
+const sanityClient = createClient({
+  projectId: 'o9tavwx2',
+  dataset: 'production',
+
+});
+
 
 export const fetchAllMovies = async () => {
-    const data = await client.fetch(`*[_type == "movie"]`)
-    return data
-}
-
-// export const fetchAllMovies(id) = async () ?> {
-//     const data = await client.fetch(`*[_type == "movie" && -id == $id]{_id, title, reviews}`, {id})
-// }
+  const data = await sanityClient.fetch(`*[_type == "movie"]`)
+  return data
+};
