@@ -1,6 +1,7 @@
 import FrontPage from './Components/FrontPage'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
+import Home from './Components/Home'
 import './App.css'
 
 function App() {

@@ -21,7 +21,7 @@ console.log(movie)
 
 return(
     <>
-    <h1>Frontpage</h1>
+    <h1>WHAT TO SEE?</h1>
     <Navbar/>
     <ul>
         {movie?.map((movie, index) => <li key={index}>
