@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { fetchAllMovies } from "..sanity/movieServices"
+//import { fetchAllMovies } from "..sanity/movieServices"
 import { useEffect, useState } from "react"
 import Navbar from "./Navbar"
 
