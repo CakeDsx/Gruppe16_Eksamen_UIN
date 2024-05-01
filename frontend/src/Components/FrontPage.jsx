@@ -9,7 +9,7 @@ export default function FrontPage(){
         const data = await fetchAllMovies()
         setMovie(data)
     }
-}
+
 
 useEffect(() => {
     getMovies()
@@ -27,3 +27,4 @@ return(
     </ul>
     </>
 )
+}
