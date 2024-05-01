@@ -7,15 +7,12 @@ function App() {
 
   return (
    <>
-   
    <Layout>
       <Routes>
         <Route path="/" element = { <FrontPage /> }/>
-
       </Routes>
       </Layout>
       </>
-    
   )
 }
 
