@@ -10,7 +10,7 @@ export default function Home() {
             try {
                 //gotten from the API to test, javascript(fetch)
 
-                const url = 'https://moviesdatabase.p.rapidapi.com/titles/tt0086250';
+                const url = 'https://moviesdatabase.p.rapidapi.com/titles/';
 const options = {
 	method: 'GET',
 	headers: {
