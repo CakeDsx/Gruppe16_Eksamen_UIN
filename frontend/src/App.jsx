@@ -4,6 +4,7 @@ import Layout from './Components/Layout'
 import Home from './Components/Home'
 import NoPage from './Components/NoPage'
 import './App.css'
+import './Styling/Styling.scss'
 
 function App() {
 
