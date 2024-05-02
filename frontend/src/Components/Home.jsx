@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
 import MovieCard from "./MovieCard"
 
-export default function Home({}){
+export default function Home(){
     const [movies, setMovies] = useState(null)
 
     const getAllMovies = async () => {

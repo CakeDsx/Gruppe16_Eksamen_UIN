@@ -8,4 +8,32 @@
 }
 body{
     color: var(--blue-color);
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    background-color: var(--blue-color);
+    margin: 0;
+    padding: 0;
+    color: var(--grey-color);
+    text-decoration: none;
+    a{
+        color: var(--black-color);
+        text-decoration: none;
+    }
+    ul{
+        list-style-type: none;
+
+        li{
+            text-decoration: none;
+        }
+
+    }
+
+
+}
+
+main{
+    background-color: var(--black-color);
 }
