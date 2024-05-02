@@ -1,15 +1,27 @@
-import { createClient } from '@sanity/client'
+import { client, writeClient } from "./client"
 
-
-const sanityClient = createClient({
-  projectId: 'o9tavwx2',
-  dataset: 'production',
-  apiVersion: "v2022-03-07",
-  useCdn: false,
-})
-
-
-export const fetchAllMovies = async () => {
-  const data = await sanityClient.fetch(`*[_type == "movie"]`)
-  return data
+export async function fetchAllMovies(){
+    const data = await client.fetch(`*[type == "movies"]{
+        _id,
+        movietitle,
+        "movieslug":movieurl.current
+        "moviename": movie->movietitle,
+        "movieslug": movie->movieurl.current,
+        "image": movieimage.asset->url
+    }`)
+        return data
 }
+
+export async function fetchMovieBySlug(slug){
+    const data = await client.fetch(`*[type == "movies" && movieurl.current == $slug]{
+        _id,
+        moviename,
+        description,
+        "categoryname": category->categorytitle,
+        "movieslug": category->categoryurl.current,
+        "image": movieimage.asset->url,
+            
+    }`, {slug})
+    return data
+}
+
