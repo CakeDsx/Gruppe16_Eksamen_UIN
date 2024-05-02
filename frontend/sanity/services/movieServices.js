@@ -1,4 +1,4 @@
-import { client, writeClient } from "./client"
+import { client } from "./client"
 
 export async function fetchAllMovies(){
     const data = await client.fetch(`*[type == "movies"]{
