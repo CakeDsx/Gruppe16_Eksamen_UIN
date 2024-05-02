@@ -1,28 +1,50 @@
-import { useEffect, useState } from "react"
-import { fetchAllMovies } from "../../sanity/services/movieServices"
+import React, { useEffect, useState } from "react"
 import MovieCard from "./MovieCard"
 
-export default function Home(){
-    const [movies, setMovies] = useState(null)
-
-    const getAllMovies = async () => {
-        const data = await fetchAllMovies()
-        setMovies(data)
-    }
-
-    
+export default function Home() {
+    const [movies, setMovies] = useState([])
+    const [error, setError] = useState(null)
 
     useEffect(() => {
-        getAllMovies
+        async function fetchMovies() {
+            try {
+                const response = await fetch(
+                "https://moviesdatabase.p.rapidapi.com/titles/series/%7BseriesId%7D",
+                    {
+                    method: "GET",
+                    headers: {
+                            "X-RapidAPI-Key": "023516fa7dmsh3db1b9729c75136p1ed7fejsn251f88436307",
+                            "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
+                    }
+                }
+            )
+                const data = await response.json()
+                if (Array.isArray(data)) {
+                    setMovies(data)
+                } else {
+                    setError("Invalid data format received from the API")
+                }
+            } catch (error) {
+                console.error("Error fetching movies:", error)
+                setError("Error fetching movies. Please try again later.")
+            }
+        }
+
+        fetchMovies()
     }, [])
 
-    console.log(movies)
-
     return (
-    <main>
-        <h2>WhatToSee</h2>
-        
-        {movies?.map((movie, index) => <MovieCard key={index} movieInfo={movie} />)}
-    </main>
-    )
+        <main>
+            <h2>WhatToSee</h2>
+            {error ? (
+                <div>{error}</div>
+            ) : (
+                <div className="movie-list">
+                    {movies.map((movie, index) => (
+                        <MovieCard key={index} movie={movie} />
+                    ))}
+                </div>
+            )}
+        </main>
+    );
 }

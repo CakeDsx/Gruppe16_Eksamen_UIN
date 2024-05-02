@@ -1,31 +1,33 @@
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
-import { useEffect, useState } from "react"
 
-export default function FrontPage(){
-    const [movie, setMovie] = useState(null)
+export default function FrontPage() {
+    const [movies, setMovies] = useState(null)
 
-    async function getMovies(){
-        const data = await fetchAllMovies()
-        setMovie(data)
-    }
+    useEffect(() => {
+        async function getMovies() {
+            try {
+                const data = await fetchAllMovies()
+                setMovies(data)
+            } catch (error) {
+                console.error("Error fetching movies:", error)
+            }
+        }
 
+        getMovies()
+    }, [])
 
-useEffect(() => {
-    getMovies()
-}, [])
-
-console.log(movie)
-
-return(
-    <>
-    <h1>WHAT TO SEE?</h1>
-    
-    <ul>
-        {movie?.map((movie, index) => <li key={index}>
-            <Link to={movie._id}>{movie.title}</Link>
-        </li>)}
-    </ul>
-    </>
-)
+    return (
+        <>
+            <h1>WHAT TO SEE?</h1>
+            <ul>
+                {movies?.map((movie) => (
+                    <li key={movie._id}>
+                        <Link to={movie._id}>{movie.movietitle}</Link>
+                    </li>
+                ))}
+            </ul>
+        </>
+    )
 }

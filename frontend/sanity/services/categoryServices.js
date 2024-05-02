@@ -1,26 +1,28 @@
 import { client } from "./client"
 
-export async function fetchAllcategories(){
-    const data = await client.fetch(`*[type == "categories"]{
-        _id,
-        categorytitle,
-        "movieslug":categoryurl.current}`)
+export async function fetchAllCategories() {
+    try {
+        const data = await client.fetch(`*[_type == "category"]{
+            _id,
+            categorytitle,
+            "categoryslug": categoryurl.current
+        }`)
         return data
+    } catch (error) {
+        console.error("Error fetching all categories:", error)
+        throw error
+    }
 }
 
-export async function fetchCategoryBySlug(slug){
-    const data = await client.fetch(`*[type == "categories" && categoryurl.current == $slug]{
-        _id,
-        categorytitle,
-        "movieProducts": *[_type == "movie" && references(^._id)]{
+export async function fetchCategoryBySlug(slug) {
+    try {
+        const data = await client.fetch(`*[_type == "category" && categoryurl.current == $slug]{
             _id,
-            moviename,
-            "slug":movieurl.current,
-            "moviename": category->categorytitle,
-            "movieslug": category->categoryurl.current,
-            "image": movieimage.asset->url
-            
-        }
-    }`, {slug})
-    return data
+            categorytitle
+        }`, { slug })
+        return data[0]
+    } catch (error) {
+        console.error("Error fetching category by slug:", error)
+        throw error
+    }
 }

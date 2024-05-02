@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react"
-import {Link} from "react-router-dom"
+import React from "react"
 
-export default function MovieCard({movieInfo}){
-    const [movie, setmovie] = useState({
-        title: movieInfo.movieName,
-    })
-
-    return(
-        <article className= "movieCard">
-            <img src={movieInfo.image} alt={movieInfo.moviename} />
-            <Link to={"/movies/" + movieInfo.catslug}>{movieInfo.catname}</Link>
-            <h3>{movieInfo.moviename}</h3>
-            <button onClick={favClick}>Add to favoritas</button>
-
-        </article>
-
+function MovieCard({ movie }) {
+    return (
+        <div className="movie-card">
+            <img src={movie.image} alt={movie.movietitle} />
+            <h3>{movie.movietitle}</h3>
+        </div>
     )
 }
+
+export default MovieCard
