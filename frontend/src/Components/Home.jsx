@@ -8,16 +8,34 @@ export default function Home() {
     useEffect(() => {
         async function fetchMovies() {
             try {
-                const response = await fetch(
-                "https://moviesdatabase.p.rapidapi.com/titles/series/%7BseriesId%7D",
-                    {
-                    method: "GET",
-                    headers: {
-                            "X-RapidAPI-Key": "023516fa7dmsh3db1b9729c75136p1ed7fejsn251f88436307",
-                            "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
-                    }
-                }
-            )
+                //gotten from the API to test, javascript(fetch)
+
+                const url = 'https://moviesdatabase.p.rapidapi.com/titles/tt0086250';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '023516fa7dmsh3db1b9729c75136p1ed7fejsn251f88436307',
+		'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options)
+	const result = await response.text()
+	console.log(result)
+} catch (error) {
+	console.error(error)
+}
+            //     const response = await fetch(
+            //     "https://moviesdatabase.p.rapidapi.com/titles/series/%7BseriesId%7D",
+            //         {
+            //         method: "GET",
+            //         headers: {
+            //                 "X-RapidAPI-Key": "023516fa7dmsh3db1b9729c75136p1ed7fejsn251f88436307",
+            //                 "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
+            //         }
+            //     }
+            // )
                 const data = await response.json()
                 if (Array.isArray(data)) {
                     setMovies(data)
@@ -35,7 +53,7 @@ export default function Home() {
 
     return (
         <main>
-            <h2>WhatToSee</h2>
+            <h2>Movies</h2>
             {error ? (
                 <div>{error}</div>
             ) : (
