@@ -42,7 +42,7 @@ export default function Home() {
                 <div>{error}</div>
             ) : (
 
-                <div className="movie-list">
+                <ul>
                 {movies.map((movie, index) => (
                     <div key={index}>
                         <h3>{movie.title}</h3>
@@ -50,10 +50,14 @@ export default function Home() {
                             <img src={movie.primaryImage.url} alt={movie.title} />
                         )}
 
-                        {/* add more info here :D */}
+                        {movies?.map((movie, index) =>
+                        <li key={index}>
+                            <Link to={movie._id} alt={movie.title}>Link</Link>
+                        </li>
+                        )}
                     </div>
                 ))}
-            </div>
+            </ul>
 
                 // <div className="movie-list">
                 //     {movies.map((movie, index) => (
