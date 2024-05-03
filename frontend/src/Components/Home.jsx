@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
-import MovieCard from "./MovieCard"
+//import MovieCard from "./MovieCard"
+import AddMovie from "./MovieCard"
+import { fetchAllMovies } from "../../sanity/services/movieServices"
 
 export default function Home() {
     const [movies, setMovies] = useState([])
@@ -26,16 +28,7 @@ try {
 } catch (error) {
 	console.error(error)
 }
-            //     const response = await fetch(
-            //     "https://moviesdatabase.p.rapidapi.com/titles/series/%7BseriesId%7D",
-            //         {
-            //         method: "GET",
-            //         headers: {
-            //                 "X-RapidAPI-Key": "023516fa7dmsh3db1b9729c75136p1ed7fejsn251f88436307",
-            //                 "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
-            //         }
-            //     }
-            // )
+          
                 const data = await response.json()
                 if (Array.isArray(data)) {
                     setMovies(data)
@@ -43,7 +36,7 @@ try {
                     setError("Invalid data format received from the API")
                 }
             } catch (error) {
-                console.error("Error fetching movies:", error)
+                // console.error("Error fetching movies:", error)
                 setError("Error fetching movies. Please try again later.")
             }
         }
@@ -54,15 +47,18 @@ try {
     return (
         <main>
             <h2>Movies</h2>
+
+
+            <AddMovie />
             {error ? (
                 <div>{error}</div>
             ) : (
-                <div className="movie-list">
+             <div className="movie-list">
                     {movies.map((movie, index) => (
-                        <MovieCard key={index} movie={movie} />
+                        <AddMovie key={index} movie={movie} />
                     ))}
-                </div>
-            )}
+                </div> 
+             )} 
         </main>
     )
 }

@@ -1,3 +1,17 @@
+// import { client } from "./client"
+
+
+// export const fetchAllMovies = async () => {
+//     const data = await client.fetch(`*[_type == "movie"]`)
+//     return data
+// }
+
+// export const fetchAllMovies(id) = async () ?> {
+//     const data = await client.fetch(`*[_type == "movie" && -id == $id]{_id, title}`, {id})
+// }
+
+
+
 import { client } from "./client"
 
 export async function fetchAllMovies() {

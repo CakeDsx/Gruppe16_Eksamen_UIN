@@ -1,3 +1,5 @@
+
+
 import FrontPage from './Components/FrontPage'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
@@ -11,16 +13,17 @@ function App() {
   return (
    <>
   
- <Layout>
+<Layout>
       <Routes>
         <Route path="/" element = { <FrontPage />} />
         <Route path="/FrontPage" element = { <FrontPage /> } />
-        <Route path="/Home" element = { <Home /> }/>
+        <Route path="/Home" element = { <Home /> } />
 
         <Route path="*" element={<NoPage />} />
       </Routes>
-
       </Layout>
+
+    
       
       </>
   )

@@ -7,16 +7,16 @@ import React, { useState, useEffect } from "react"
 export default function Layout({children}){
     const [searchTerm, setSearchTerm] = useState("")
     const [searchResultsState, setSearchResultsState] = useState([])
-    const [query, setQuery] = useState("James Bond")
+    const [query, setQuery] = useState("")
 
      // query ble inspirert av det som ble gjort til timen under rick and morty oppgavene https://github.com/toremake/UIN2024_coursebase/blob/main/Category_blogg/src/App.jsx
      const fetchData = async (query) => {
         try{
-            const response = await fetch('https://moviesdatabase.p.rapidapi.com/titles/')
+            const response = await fetch(`https://moviesdatabase.p.rapidapi.com/titles/'${query}'`)
             const data = await response.json()
             setSearchResultsState(data.docs)
         } catch (error){
-            console.error("Det har skjedd en feil", error)
+            // console.error("Det har skjedd en feil", error)
         }
     }
 
@@ -48,8 +48,10 @@ export default function Layout({children}){
             <button onClick={handleSearch}>Søk</button>
         </nav>
         <main>
-            <Home searchResults={searchResultsState} />
+             <Home />
+
             {children}
+        
         </main>
         </>
     )

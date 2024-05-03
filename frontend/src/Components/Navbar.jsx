@@ -1,5 +1,5 @@
 import {useEffect, useState } from "react"
-import {Link, useParams } from "react-router-dom"
+import {Link } from "react-router-dom"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
 
 export default function Navbar(){
