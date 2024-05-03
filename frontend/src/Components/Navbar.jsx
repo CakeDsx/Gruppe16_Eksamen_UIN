@@ -1,6 +1,7 @@
 import {useEffect, useState } from "react"
 import {Link } from "react-router-dom"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
+import Title from "./Title"
 
 export default function Navbar(){
     const [active, setActive] = useState()
@@ -21,13 +22,17 @@ console.log(movieList)
 
 return(
     <nav>
+        <Title />
 
         <ul>
+            
+                <Link to="/FrontPage">WhatToSee</Link>
+            
             <li>
-                <Link to="/FrontPage">FrontPage</Link>
+                <Link to="/Home">What to see</Link>
             </li>
             <li>
-                <Link to="/Home">Home</Link>
+                <Link to="/Home">Genre</Link>
             </li>
         </ul>
        
