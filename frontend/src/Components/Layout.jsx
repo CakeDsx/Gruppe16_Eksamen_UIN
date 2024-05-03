@@ -12,7 +12,7 @@ export default function Layout({children}){
      // query ble inspirert av det som ble gjort til timen under rick and morty oppgavene https://github.com/toremake/UIN2024_coursebase/blob/main/Category_blogg/src/App.jsx
      const fetchData = async (query) => {
         try{
-            const response = await fetch(`https://moviesdatabase.p.rapidapi.com/titles=${query}`)
+            const response = await fetch('https://moviesdatabase.p.rapidapi.com/titles/')
             const data = await response.json()
             setSearchResultsState(data.docs)
         } catch (error){
