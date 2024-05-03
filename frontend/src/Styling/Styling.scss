@@ -45,4 +45,10 @@ nav{
 
 main{
     background-color: var(--black-color);
+
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0 auto;
+    }
 }

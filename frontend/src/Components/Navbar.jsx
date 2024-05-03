@@ -35,6 +35,7 @@ return(
                 <Link to="/Home">Genre</Link>
             </li>
         </ul>
+        
        
     </nav>
 )

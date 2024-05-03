@@ -39,14 +39,16 @@ export default function Layout({children}){
     return(
         <>
         <header>
+        <Title/>
             <h1>Movie Search</h1>
             <Navbar/>
-            <Title/>
-        </header>
-        <nav>
+            <nav>
             <input type="text" value={searchTerm} onChange={handleInputChange} placeholder="Skriv minst tre tegn"/>
             <button onClick={handleSearch}>Søk</button>
         </nav>
+          
+        </header>
+       
         <main>
              <Home />
 
