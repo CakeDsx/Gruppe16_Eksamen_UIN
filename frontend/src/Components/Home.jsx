@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { fetchAllMovies } from "../../sanity/services/movieServices"
 import { Link } from "react-router-dom"
 
 export default function Home() {

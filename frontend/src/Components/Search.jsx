@@ -1,18 +1,20 @@
 import React from 'react'
 //import MovieCard from "./MovieCard"
-//import Home from './Home'
+import Home from './Home'
 
-const SearchResults = () => {
+export default function SearchResults(){
+
+const searchResults = () => {
+
     return(
-        <>
-        </>
-        // <div>
-        //     {searchResults.map((result, index) =>(
-        //         <div key={index}>
-        //             <Home movie={result} />
-        //             </div>
-        //     ))}
-        // </div>
+       
+        <div>
+            {searchResults.map((result, index) =>(
+                <div key={index}>
+                    <Home movie={result} />
+                    </div>
+            ))}
+        </div>
     )
 }
-export default SearchResults
+}

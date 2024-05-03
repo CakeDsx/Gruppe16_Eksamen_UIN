@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
-import { Link } from "react-router-dom"
 
 
 export default function FrontPage() {
@@ -23,11 +22,7 @@ export default function FrontPage() {
     return( 
         <>
             <h1>Frontpage</h1>
-            <ul>
-                {movies?.map((movie, index) => <li key={index}>
-                    <Link to={movie._id}>{movie.title}</Link>
-                </li>)}
-            </ul>
+            
         </>
     )
 
