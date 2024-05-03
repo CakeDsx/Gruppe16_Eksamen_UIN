@@ -41,18 +41,32 @@ export default function Home() {
             {error ? (
                 <div>{error}</div>
             ) : (
-                <div className="movie-list">
-                    {movies.map((movie, index) => (
-                        <div key={index}>
-                            <h3>{movie.title}</h3>
-                            {movie.primaryImage && movie.primaryImage.url && (
-                                <img src={movie.primaryImage.url} alt={movie.title} />
-                            )}
 
-                            {/* add more info here :D */}
-                        </div>
-                    ))}
-                </div>
+                <div className="movie-list">
+                {movies.map((movie, index) => (
+                    <div key={index}>
+                        <h3>{movie.title}</h3>
+                        {movie.primaryImage && movie.primaryImage.url && (
+                            <img src={movie.primaryImage.url} alt={movie.title} />
+                        )}
+
+                        {/* add more info here :D */}
+                    </div>
+                ))}
+            </div>
+
+                // <div className="movie-list">
+                //     {movies.map((movie, index) => (
+                //         <div key={index}>
+                //             <h3>{movie.title}</h3>
+                //             {movie.primaryImage && movie.primaryImage.url && (
+                //                 <img src={movie.primaryImage.url} alt={movie.title} />
+                //             )}
+
+                //             {/* add more info here :D */}
+                //         </div>
+                //     ))}
+                // </div>
             )}
         </main>
     );
