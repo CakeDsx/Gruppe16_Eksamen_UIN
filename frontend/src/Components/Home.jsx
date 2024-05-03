@@ -52,7 +52,7 @@ export default function Home() {
 
                         {movies?.map((movie, index) =>
                         <li key={index}>
-                            <Link to={movie._id} alt={movie.title}>Link</Link>
+                            <Link to={movie.titleText.text} alt={movie.titleText}>{movie.titleText.text}</Link>
                         </li>
                         )}
                     </div>
