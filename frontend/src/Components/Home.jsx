@@ -44,12 +44,13 @@ export default function Home() {
                 <section>
                 {movies?.map((movie, index) => (
                     <article key={index}>
-                        <h3>{movie.title}</h3>
+                        <h3>{movie.titleText.text}</h3>
                         {movie.primaryImage && movie.primaryImage.url && (
                             <img src={movie.primaryImage.url} alt={movie.primaryImage.caption.plainText} />
                             
                         )}
-                        <Link to={movie.id} alt={movie.titleText}>{movie.titleText.text}</Link>
+                        <Link to={`https://www.imdb.com/title/${movie.id}`} alt={movie.titleText}>{movie.titleText.text}</Link>
+
 
                   
                     </article>
