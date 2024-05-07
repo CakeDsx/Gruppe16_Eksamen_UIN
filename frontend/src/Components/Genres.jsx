@@ -44,35 +44,16 @@ const response = await fetch(url, options)
     return (
 
         <>
-        <section>
-            {genres?.map((genre, index) =>
-            <article key={index}>
-                <h3>Genres {index + 1}</h3>
-                <p>{genres}</p>
-            </article>
+        <ul>
+            <h2>Genres</h2>
+            {genres?.map((genres, index) =>
+            <li key={index}>
+                <span>{genres}</span>
+                <FontAwesomeIcon icon="fa-regular fa-star" />
+                <FontAwesomeIcon icon="fa-solid fa-star" />
+            </li>
             )}
-        </section>
-            {/* <h2>Genres</h2>
-            {error ? (
-                <div>{error}</div>
-            ) : (
-
-                <section>
-                {genres?.map((genres, index) => (
-                    <article key={index}>
-                        <h3>{genres.titleText.text}</h3>
-                        {genres.primaryImage && movie.primaryImage.url && (
-                            <img src={movie.primaryImage.url} alt={movie.primaryImage.caption.plainText} />
-                            
-                        )}
-                        <Link to={`https://www.imdb.com/title/${movie.id}`} target="_blank" alt={movie.titleText}>{movie.titleText.text}</Link>
-
-                        <FontAwesomeIcon icon="fa-regular fa-star" />
-                        <FontAwesomeIcon icon="fa-solid fa-star" />
-                    </article>
-                ))}
-            </section>
-            )} */}
+        </ul>
         </>
     )
 }

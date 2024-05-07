@@ -91,5 +91,9 @@ main{
         list-style-type: none;
         padding: 0;
         margin: 0 auto;
+
+        li{
+            color: var(--black-color);
+        }
     }
 }
