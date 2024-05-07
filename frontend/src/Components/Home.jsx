@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 
 export default function Home() {
+    library.add(fab, fas, far)
     const [movies, setMovies] = useState([])
     const [error, setError] = useState(null)
 
@@ -51,8 +57,8 @@ export default function Home() {
                         )}
                         <Link to={`https://www.imdb.com/title/${movie.id}`} alt={movie.titleText}>{movie.titleText.text}</Link>
 
-
-                  
+                        <FontAwesomeIcon icon="fa-regular fa-star" />
+                        <FontAwesomeIcon icon="fa-solid fa-star" />
                     </article>
                 ))}
             </section>
