@@ -55,7 +55,7 @@ export default function MovieCard() {
                             <img src={movie.primaryImage.url} alt={movie.primaryImage.caption.plainText} />
                             
                         )}
-                        <Link to={`https://www.imdb.com/title/${movie.id}`} alt={movie.titleText}>{movie.titleText.text}</Link>
+                        <Link to={`https://www.imdb.com/title/${movie.id}`} target="_blank" alt={movie.titleText}>{movie.titleText.text}</Link>
 
                         <FontAwesomeIcon icon="fa-regular fa-star" />
                         <FontAwesomeIcon icon="fa-solid fa-star" />
