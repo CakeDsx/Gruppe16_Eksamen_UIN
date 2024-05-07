@@ -5,6 +5,7 @@
     --white-color: #fff;
     --black-color: #010101;
     --light-black-color: #717171;
+    --yellow-color: #D4AF37;
 
     margin: 0 auto;
     padding: 0;
@@ -77,7 +78,7 @@ main{
              }
 
             svg{
-                color: var(--white-color);
+                color: var(--yellow-color);
             }
         }
     }
@@ -91,9 +92,20 @@ main{
         list-style-type: none;
         padding: 0;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         li{
             color: var(--black-color);
+            padding: 0.5rem 0;
+            border-bottom: solid var(--black-color) 0.1rem;
+            width: fit-content;
+            margin: 0.5rem 2rem;
+
+            svg{
+                color: var(--yellow-color);
+            }
         }
     }
 }
