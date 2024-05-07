@@ -45,11 +45,11 @@ export default function Home() {
                 {movies?.map((movie, index) => (
                     <article key={index}>
                         <h3>{movie.title}</h3>
-                        <Link to={movie.id} alt={movie.titleText}>{movie.titleText.text}</Link>
                         {movie.primaryImage && movie.primaryImage.url && (
                             <img src={movie.primaryImage.url} alt={movie.primaryImage.caption.plainText} />
                             
                         )}
+                        <Link to={movie.id} alt={movie.titleText}>{movie.titleText.text}</Link>
 
                   
                     </article>

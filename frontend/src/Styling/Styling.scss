@@ -44,15 +44,37 @@ nav{
 }
 
 main{
-    background-color: var(--black-color);
+    background-color: var(--grey-color);
+
+    section{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        article{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            background-color: var(--blue-color);
+            border: var(--black-color) solid 0.3rem;
+
+            img{
+                max-width: 250px;
+                max-height: 300px;
+            }
+
+            a{
+                color: var(--grey-color);
+                text-decoration: none;
+                text-align: center;
+                margin: 1rem;
+             }
+        }
+    }
 
 
- a{
-    color: var(--grey-color);
-    text-decoration: none;
-    text-align: center;
-    
- }
+ 
 
     
 
