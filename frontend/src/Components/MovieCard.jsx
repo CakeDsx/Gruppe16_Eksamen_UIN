@@ -41,7 +41,7 @@ export default function MovieCard() {
     }, [])
 
     return (
-        <main>
+        <>
             <h2>Movies</h2>
             {error ? (
                 <div>{error}</div>
@@ -76,6 +76,6 @@ export default function MovieCard() {
                 //     ))}
                 // </div>
             )}
-        </main>
+        </>
     )
 }
