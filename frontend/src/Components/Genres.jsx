@@ -44,6 +44,14 @@ const response = await fetch(url, options)
     return (
 
         <>
+        <section>
+            {genres?.map((genre, index) =>
+            <article key={index}>
+                <h3>Genres {index + 1}</h3>
+                <p>{genres}</p>
+            </article>
+            )}
+        </section>
             {/* <h2>Genres</h2>
             {error ? (
                 <div>{error}</div>
