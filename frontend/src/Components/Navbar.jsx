@@ -32,7 +32,7 @@ return(
                 <Link to="/Home">What to see</Link>
             </li>
             <li>
-                <Link to="/Home">Genre</Link>
+                <Link to="/Genres">Genre</Link>
             </li>
         </ul>
         
