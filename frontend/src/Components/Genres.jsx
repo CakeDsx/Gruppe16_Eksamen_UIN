@@ -42,18 +42,22 @@ const response = await fetch(url, options)
     }, [])
 
     return (
-
         <>
-        <ul>
-            <h2>Genres</h2>
-            {genres?.map((genres, index) =>
-            <li key={index}>
-                <span>{genres}</span>
-                <FontAwesomeIcon icon="fa-regular fa-star" />
-                <FontAwesomeIcon icon="fa-solid fa-star" />
-            </li>
-            )}
-        </ul>
+            <ul>
+                <h2>Genres</h2>
+                {genres
+                    ? genres
+                        .filter((genres, index) => index > 0)
+                        .map((genres, index) => (
+                            <li key={index}>
+                                <span>{index + 1}. {genres}</span>
+                                <FontAwesomeIcon icon={['far', 'star']} />
+                                <FontAwesomeIcon icon={['fas', 'star']} />
+                            </li>
+                        ))
+                    : null
+                }
+            </ul>
         </>
     )
 }
