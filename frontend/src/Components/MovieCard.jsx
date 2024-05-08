@@ -81,58 +81,59 @@
 // }
 // //
 
+import React, { useState, useEffect } from "react";
+import client from "../../sanity/services/client";
+import { Link } from "react-router-dom";
 
-import React, {useState, useEffect} from "react"
-// import creatClient from "../../sanity/services/client"
-//import { createClient } from "@sanity/client"
-import { Link } from "react-router-dom"
-import client from "../../sanity/services/client"
+export default function MovieCard() {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio', // Replace with your Sanity API token
+          },
+          body: JSON.stringify({
+            query: '*[_type == "movie"]{title, slug}',
+          }),
+        });
 
-export default function movieCard(){
-    const [movieData, setmovie] = useState(null)
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
 
-    useEffect(() => {
-        client
-                .fetch(`*[_type == "movie"]{
-                    title,
-                    slug,
-                    mainImage{
-                        asset ->{
-                            _id,
-                            url
-                        },
-                        alt
-                    }
-                }`)
-                .then((data) => setmovie(data))
-                .catch(console.error)
-    }, []) 
+        const data = await response.json();
+        setMovies(data.result);
+      } catch (error) {
+        console.error('There was a problem fetching movies:', error);
+        setError('Error fetching movies. Please try again later.');
+      }
+    };
 
-    return (
-        
-            <section>
-                <h1></h1>
-                <h2></h2>
-                <div>
-                {movieData && movieData.map((movie, index) => (
-                    <article>
-                        <Link to={"/movie/" + movie.slug.current} key={movie.slug.current}>
-                        <span
-                        key={index}>
-                            <img 
-                            src ={movie.mainImage.asset.url}
-                            alt ={movie.mainImage.alt}
-                            />
-                            <span>
-                                <h3>{movie.title}</h3>
-                            </span>
-                        </span>
-                        </Link>
-                    </article>
-                    ))}
-                </div>
-            </section>
-        
-    )
+    fetchMovies();
+  }, []);
+
+  return (
+    <div>
+      <h2>Movies</h2>
+      {error ? (
+        <div>{error}</div>
+      ) : (
+        <section>
+          {movies.map((movie, index) => (
+            <article key={index}>
+              <Link to={`/movie/${movie.slug}`}>
+                <h3>{movie.title}</h3>
+              </Link>
+            </article>
+          ))}
+        </section>
+      )}
+    </div>
+  );
 }
