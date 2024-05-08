@@ -3,7 +3,10 @@ export default {
     title: 'kategori',
     type: 'document',
     fields: [
+
+     
       {
+        
         name: 'Genre',
         title: 'Genre',
         type: 'string'
