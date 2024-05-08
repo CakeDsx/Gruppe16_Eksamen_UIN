@@ -4,13 +4,13 @@ export default {
     type: 'document',
     fields: [
       {
-        name: 'name',
-        title: 'kake',
+        name: 'Genre',
+        title: 'Genre',
         type: 'string'
       },
       {
-        name: "mengde",
-        title: "mengde/antall",
+        name: "Movies",
+        title: "Movie_Genres",
         type: "string"
     }
     ],

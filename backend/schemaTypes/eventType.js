@@ -1,17 +1,22 @@
 export default {
-  name: 'moviecard',
-  title: 'moviecard',
+  name: 'Movies',
+  title: 'Movies',
   type: 'document',
   fields: [
     {
       name: 'name',
-      title: 'kake',
+      title: 'MovieTitle',
       type: 'string'
     },
     {
-      name: "mengde",
-      title: "mengde/antall",
+      name: "User_favorited",
+      title: "favorisert",
       type: "string"
-  }
+  },
+  {
+    name: "Genre",
+    title: "Movie_Genre",
+    type: "string"
+}
   ],
 }
