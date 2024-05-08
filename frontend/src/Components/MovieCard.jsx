@@ -83,15 +83,17 @@
 
 
 import React, {useState, useEffect} from "react"
-import createClient from "../../sanity/services/client"
+// import creatClient from "../../sanity/services/client"
+//import { createClient } from "@sanity/client"
 import { Link } from "react-router-dom"
+import client from "../../sanity/services/client"
 
 
 export default function movieCard(){
     const [movieData, setmovie] = useState(null)
 
     useEffect(() => {
-        createClient
+        client
                 .fetch(`*[_type == "movie"]{
                     title,
                     slug,
