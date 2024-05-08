@@ -40,7 +40,7 @@ const response = await fetch(url, options)
 
         fetchGenres()
     }, [])
-
+    
     return (
         <>
             <ul>
