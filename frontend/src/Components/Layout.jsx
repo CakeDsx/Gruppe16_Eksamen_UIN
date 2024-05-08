@@ -1,11 +1,9 @@
 import Title from "./Title"
 import Navbar from "./Navbar"
-import Home from "./Home"
-import Genres from "./Genres"
-import React, { useState, useEffect } from "react"
+import React from "react"
 //import MovieCard from "./MovieCard"
 
-export default function Layout(){
+export default function Layout({children}){
     // const [searchTerm, setSearchTerm] = useState("")
     // const [searchResultsState, setSearchResultsState] = useState([])
     // const [query, setQuery] = useState("")
@@ -42,19 +40,12 @@ export default function Layout(){
         <header>
         <Title/>
             <h1>Movie Search</h1>
-            <Navbar/>
-            {/* <nav>
-            <input type="text" value={searchTerm} onChange={handleInputChange} placeholder="Skriv minst tre tegn"/>
-            <button onClick={handleSearch}>Søk</button>
-        </nav> */}
-          
+            <Navbar/> 
         </header>
        
         <main>
-             <Home />
-             <Genres/>
 
-            {/* {children} */}
+            {children}
         
         </main>
         </>

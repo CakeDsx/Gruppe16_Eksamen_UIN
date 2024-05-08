@@ -110,7 +110,7 @@ export default function movieCard(){
     }, []) 
 
     return (
-        <main>
+        
             <section>
                 <h1></h1>
                 <h2></h2>
@@ -133,6 +133,6 @@ export default function movieCard(){
                     ))}
                 </div>
             </section>
-        </main>
+        
     )
 }

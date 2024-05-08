@@ -1,8 +1,13 @@
 import Genres from "./Genres"
-export default function Home(){
+
+
+
+export default function GenrePage(){
     return(
         <>
+        
         <Genres/>
+        
         </>
     )
 }

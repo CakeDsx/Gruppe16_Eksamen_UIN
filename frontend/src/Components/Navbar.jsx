@@ -21,7 +21,7 @@ useEffect(() => {
 console.log(movieList)
 
 return(
-    <nav>
+    <>
         <Title />
 
         <ul>
@@ -36,7 +36,7 @@ return(
             </li>
         </ul>
         
-       
-    </nav>
+        </>
+    
 )
 }
