@@ -22,6 +22,7 @@ console.log(movieList)
 
 return(
     <>
+    <nav>
         <Title />
 
         <ul>
@@ -35,6 +36,7 @@ return(
                 <Link to="/Genres">Genre</Link>
             </li>
         </ul>
+        </nav>
         
         </>
     
