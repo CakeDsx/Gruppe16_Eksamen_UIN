@@ -81,13 +81,12 @@
 // }
 // //
 
-import React, { useState, useEffect } from "react";
-import client from "../../sanity/services/client";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function MovieCard() {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
+  const [movies, setMovies] = useState([])
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -96,27 +95,27 @@ export default function MovieCard() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio', // Replace with your Sanity API token
+            Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
             query: '*[_type == "movie"]{title, slug}',
           }),
-        });
+        })
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Network response was not ok')
         }
 
-        const data = await response.json();
-        setMovies(data.result);
+        const data = await response.json()
+        setMovies(data.result)
       } catch (error) {
-        console.error('There was a problem fetching movies:', error);
-        setError('Error fetching movies. Please try again later.');
+        console.error('There was a problem fetching movies:', error)
+        setError('Error fetching movies. Please try again later.')
       }
-    };
+    }
 
-    fetchMovies();
-  }, []);
+    fetchMovies()
+  }, [])
 
   return (
     <div>
@@ -135,5 +134,5 @@ export default function MovieCard() {
         </section>
       )}
     </div>
-  );
+  )
 }
