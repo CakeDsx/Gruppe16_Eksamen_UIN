@@ -15,6 +15,7 @@ export const writeClient = createClient({
    
 
 })
+export default createClient;
 
 // uses GROQ to query content: https://www.sanity.io/docs/groq
 // export async function getPosts() {
