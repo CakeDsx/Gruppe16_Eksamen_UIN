@@ -13,7 +13,7 @@
 
 
 import { client } from "./client"
-import {defineConfig} from 'sanity'
+// import {defineConfig} from 'sanity'
 import {defineCliConfig} from 'sanity/cli'
 
 
@@ -49,18 +49,18 @@ export async function fetchMovieBySlug(slug) {
     }
 }
 
-
-
-
 const API_TOKEN = 'sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio'
 const DATASET_ID = 'movies'
 const PROJECT_ID = 'o9tavwx2'
 // Construct the URL using the dataset ID
-const CAT_API_URL = `https://${PROJECT_ID}.api.sanity.io/v1/data/query/${DATASET_ID}`
+const MOVIES_API_URL = `https://${PROJECT_ID}.api.sanity.io/v1/data/query/${DATASET_ID}`
 
 // Function to fetch cat breeds
-function fetchMovies() {
-  fetch(CAT_API_URL, {
+export default defineCliConfig() 
+
+
+
+  fetch(MOVIES_API_URL, {
     headers: {
       'Authorization': `Bearer ${API_TOKEN}`
     }
@@ -68,15 +68,16 @@ function fetchMovies() {
   .then(res => res.json())
   .then(MovieTitles => {
     // Now you have an array of catBreeds from the external API
-    console.log(MovieTitles);
+    console.log(MovieTitles)
   })
   .catch(error => {
     console.error('Error fetching data:', error)
   })
-}
+
+
 
 // Call the function to fetch cat breeds
-export default fetchMovies();
+defineCliConfig()
 
 
 
