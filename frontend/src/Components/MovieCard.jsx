@@ -98,7 +98,7 @@ export default function MovieCard() {
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[_type == "movie"]{title, slug}',
+            query: '*[_type == "movie"]{title, slug, id, mainImage}',
           }),
         })
 
@@ -126,7 +126,10 @@ export default function MovieCard() {
         <section>
           {movies.map((movie, index) => (
             <article key={index}>
-              <Link to={`/movie/${movie.slug}`}>
+              <Link to={`https://www.imdb.com/title/${movie.id}`} target="_blank" alt={movie.title}>
+                {movie.mainImage && (
+                  <img src={movie.mainImage.asset.url} alt={movie.title} />
+                )}
                 <h3>{movie.title}</h3>
               </Link>
             </article>
