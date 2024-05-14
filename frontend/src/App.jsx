@@ -1,15 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+
+import FrontPage from './Components/FrontPage'
+import { Route, Routes } from 'react-router-dom'
+import Layout from './Components/Layout'
+import Home from './Components/Home'
+import NoPage from './Components/NoPage'
+import GenrePage from './Components/GenrePage'
 import './App.css'
+import './Styling/Styling.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-     
-    </>
+   <>
+  
+<Layout>
+      <Routes>
+        <Route path="/" element = { <FrontPage />} />
+        <Route path="/FrontPage" element = { <FrontPage /> } />
+        <Route path="/Home" element = { <Home /> } />
+        <Route path="/Genres" element = { <GenrePage /> } />
+
+
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+      </Layout>
+
+    
+      
+      </>
   )
 }
 

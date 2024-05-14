@@ -1,0 +1,111 @@
+:root{
+    --blue-color: #4600d2;
+    --pink-color: #d9176d;
+    --grey-color: #f3f3f3;
+    --white-color: #fff;
+    --black-color: #010101;
+    --light-black-color: #717171;
+    --yellow-color: #D4AF37;
+
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    max-width: 100%;
+}
+body{
+    color: var(--blue-color);
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    color: var(--white-color);
+}
+
+nav{
+    background-color: var(--blue-color);
+    margin: 0;
+    padding: 0;
+    color: var(--grey-color);
+    
+    
+    a{
+        color: var(--black-color);
+        text-decoration: none;
+        
+
+        
+    }
+    ul{
+        list-style-type: none;
+
+        li{
+            text-decoration: underline;
+        }
+
+    }
+
+
+}
+
+main{
+    background-color: var(--grey-color);
+
+    section{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        article{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            background-color: var(--blue-color);
+            border: var(--black-color) solid 0.3rem;
+
+            img{
+                max-width: 250px;
+                max-height: 300px;
+            }
+
+            a{
+                color: var(--grey-color);
+                text-decoration: none;
+                text-align: center;
+                margin: 1rem;
+             }
+
+            svg{
+                color: var(--yellow-color);
+            }
+        }
+    }
+
+
+ 
+
+    
+
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        li{
+            color: var(--black-color);
+            padding: 0.5rem 0;
+            border-bottom: solid var(--black-color) 0.1rem;
+            width: fit-content;
+            margin: 0.5rem 2rem;
+
+            svg{
+                color: var(--yellow-color);
+            }
+        }
+    }
+}
