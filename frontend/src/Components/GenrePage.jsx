@@ -48,7 +48,7 @@ export default function MovieCard() {
             {movies.map((movie, index) => (
               <article key={index}>
                 <h2>{movie.titleText}</h2>
-                <img src={movie.primaryImage} alt={movie.titleText} />
+                <img src={movie.primaryImage.url} alt={movie.titleText} />
                 <FontAwesomeIcon icon="star" />
                 <FontAwesomeIcon icon={['far', 'star']} />
                 {/* Define URL for each movie here */}
