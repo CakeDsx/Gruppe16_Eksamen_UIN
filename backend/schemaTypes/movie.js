@@ -32,6 +32,12 @@ export default {
   }
 },
 {
+  name: "url",
+  title: "Url",
+  type: "string",
+},
+
+{
   name: "kategori",
   title: "Kategorier",
   type: "array",
