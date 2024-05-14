@@ -6,20 +6,20 @@ import { Link } from "react-router-dom"
 export default function FrontPage() {
     
     // const [movies, setMovies] = useState(null) 
-    const [movies, setMovies] = useState([])
+    const [users, setUsers] = useState([])
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        const fetchMovies = async () => {
+        const fetchUsers = async () => {
           try {
-            const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
+            const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/Users', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
               },
               body: JSON.stringify({
-                query: '*[_type == "Users"]{title, slug, id, url}',
+                query: '*[_type == "Users"]{Users, Fav_Movies, Fav_Genres}',
               }),
             })
     
@@ -28,28 +28,28 @@ export default function FrontPage() {
             }
     
             const data = await response.json()
-            setMovies(data.result)
+            setUsers(data.result)
           } catch (error) {
-            console.error('There was a problem fetching movies:', error)
-            setError('Error fetching movies. Please try again later.')
+            console.error('There was a problem fetching users:', error)
+            setError('Error fetching users. Please try again later.')
           }
         }
 
-        fetchMovies()
+        fetchUsers()
     }, [])
 
 
-    async function getMovies() {
-        const data = await fetchAllMovies()
-        setMovies(data)
-    }
+    // async function getMovies() {
+    //     const data = await fetchAllMovies()
+    //     setMovies(data)
+    // }
 
   
-    useEffect(() => {
-        getMovies()
-    }, [])
+    // useEffect(() => {
+    //     getMovies()
+    // }, [])
 
-    console.log(movies)
+    console.log(users)
 
     return( 
         <>
@@ -59,14 +59,12 @@ export default function FrontPage() {
         <div>{error}</div>
       ) : (
         <section>
-          {Users.map((Users, index) => (
+          {users.map((Users, index) => (
             <article key={index}>
-              <Link to={`https://www.imdb.com/title/${movie.id}`} target="_blank" alt={movie.title}>
-                {movie.url && (
+                {Users.url && (
                   <img src={Users.url} alt={Users.title} />
                 )}
                 <h3>{Users.title}</h3>
-              </Link>
             </article>
           ))}
         </section>
