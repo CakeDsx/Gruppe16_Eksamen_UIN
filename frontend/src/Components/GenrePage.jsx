@@ -1,16 +1,17 @@
 import Genres from "./Genres"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 
-const url = 'https://moviesdatabase.p.rapidapi.com/titles/tt1856101'
+const url = (`https://moviesdatabase.p.rapidapi.com/titles/=${movie.id}`)
 const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
 		'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
 	}
-};
+}
 
 export default function GenrePage() {
+
   const [movieData, setMovieData] = useState(null)
   const [error, setError] = useState(null)
 
@@ -24,7 +25,7 @@ export default function GenrePage() {
         const data = await response.json()
         setMovieData(data.results)
       } catch (error) {
-        console.error('Error fetching movie data:', error);
+        console.error('Error fetching movie data:', error)
         setError('Error fetching movie data. Please try again later.')
       }
     }
