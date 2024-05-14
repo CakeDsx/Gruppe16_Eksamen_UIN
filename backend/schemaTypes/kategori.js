@@ -4,7 +4,6 @@ export default {
     type: 'document',
     fields: [
 
-     
       {
         
         name: 'Genre',

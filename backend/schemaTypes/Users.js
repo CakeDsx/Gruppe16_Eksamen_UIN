@@ -9,15 +9,17 @@ export default {
         type: 'string'
       },
       {
-        name: "Fav_Movies",
-        title: "Fav_Movies",
-        type: "string"
+        name: "FavoriteMovies",
+        title: "FavoriteMovies",
+        type: "array",
+        of: [{type: 'reference', to:{type: 'movie'}}]
     },
     {
-        name: "Fav_Genres",
-        title: "Fav_Genres",
-        type: "string"
-    }
-  
-    ],
+        name: "FavorittKategori",
+        title: "FavoriteGenres",
+        type: "array",
+        of: [{type: 'reference', to:{type: 'kategori'}}]
+    },
+  ],
+   
   }
