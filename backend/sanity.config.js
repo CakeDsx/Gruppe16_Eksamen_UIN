@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'EksamenUIN2024',
 
   projectId: 'o9tavwx2',
-  dataset: 'production',
+  dataset: 'movies',
 
   plugins: [structureTool(), visionTool()],
 
