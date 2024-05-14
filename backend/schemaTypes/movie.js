@@ -10,11 +10,6 @@ export default {
       type: "string"
   },
   {
-    name: "id",
-    title: "Movie id",
-    type: "string",
-},
-  {
     name: "slug",
     title: "slug",
     type: "slug",
@@ -24,12 +19,6 @@ export default {
       slugify: (input) => input.toLowerCase().replace(/\s+/g, '%20')
     }
 },
-{
-  name: "url",
-  title: "Url",
-  type: "string",
-},
-
 {
   name: "kategori",
   title: "Kategorier",
