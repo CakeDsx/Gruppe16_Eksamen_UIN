@@ -1,4 +1,3 @@
-import { fetchAllMovies } from "../../sanity/services/movieServices"
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
@@ -12,7 +11,7 @@ export default function FrontPage() {
     useEffect(() => {
         const fetchUsers = async () => {
           try {
-            const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/Users', {
+            const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/production', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
