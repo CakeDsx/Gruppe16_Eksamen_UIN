@@ -24,16 +24,16 @@ return(
     <>
     <nav>
         <Title />
-
-        <ul>
-            
-                <Link to="/FrontPage">WhatToSee</Link>
-            
-            <li>
-                <Link to="/Home">What to see</Link>
+        <Link to="/FrontPage">WhatToSee</Link>
+        <ul>            
+            <li className="what-to-see">
+                <Link to="/Home">Hva skal jeg se?</Link>
             </li>
             <li>
-                <Link to="/Genres">Genre</Link>
+                <Link to="/Genres">Bla gjennom sjangere</Link>
+            </li>
+            <li>
+                <Link to="/Home">Brukernavn</Link>
             </li>
         </ul>
         </nav>

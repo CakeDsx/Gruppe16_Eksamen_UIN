@@ -1,6 +1,6 @@
 export default function Title(){
    
  return(
-        <h2>WhatToSee</h2>
+        <h2>What To See?</h2>
     )
 }
