@@ -18,5 +18,6 @@ export default {
         title: "Fav_Genres",
         type: "string"
     }
+  
     ],
   }
