@@ -31,8 +31,8 @@ function MovieImage() {
     return (
         <section>
           <article>
-            <h1>Movie Image</h1>
             {imageUrl && <img src={imageUrl} alt="Movie" />}
+            <h3>Movie title</h3>
          </article>
         </section>
     );
