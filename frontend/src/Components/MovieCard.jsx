@@ -4,6 +4,38 @@ import React, { useEffect, useState } from 'react'
 function MovieImage({ userId }) {
   const [favoriteMovies, setFavoriteMovies] = useState([])
   const [favoriteGenres, setFavoriteGenres] = useState([])
+  const [users, setUsers] = useState([])
+  const [mainUser, setMainUser ] = useState(null)
+
+  useEffect(() => {
+    async function fetchUsers() {
+      try {
+        // Fetch user's favorite movies from Sanity
+        const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
+          },
+          body: JSON.stringify({
+            query: '*[type == "Users" && _id != $userId]{_id, users}' ,
+            params: { userId },
+          }),
+        })
+
+        if(!response.ok){
+          throw new Error('failed to fetch user info')
+        }
+
+        const userData = await response.json()
+        setUsers(userData.result)
+      } catch (error){
+        console.error('Error', error)
+      }
+    }
+
+    fetchUsers()
+  }, [userId])
 
   useEffect(() => {
     async function fetchUserInfo(userId) {
@@ -44,9 +76,17 @@ function MovieImage({ userId }) {
       }
     }
 
+    if (mainUser){
+      fetchUserInfo(mainUser)
+    }
+    }, [mainUser])
+
+    const handlemainUser = (userId) => {
+      setMainUser(userId)
+    }
+
   
-    fetchUserInfo(userId)
-  }, [userId])
+ 
 
   return (
     <>
@@ -72,8 +112,9 @@ function MovieImage({ userId }) {
       <section id='users'>
         <h2>I'm watching with...</h2>
         <ul>
-         <li>Brukernavn</li>
-         <li>Brukernavn</li>
+         {users.slice(0, 2).map((user) =>(  //REEEEEEEEEEEEE
+        <li key = {user._id} onClick={() => handlemainUser(user._id)}>{user.users}</li> //i have never been so annoyed trying to find what was wrong....i missed = after onclick....
+          ))} 
         </ul>
       </section>
     </>
