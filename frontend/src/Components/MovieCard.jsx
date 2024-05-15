@@ -67,13 +67,12 @@ function MovieImage({ userId }) {
         console.log('Favorite Genre:', genres)
 
 
-        setFavoriteMovies(movies)
-        setFavoriteGenres(genres)
+        
 
         //fetches movie images from Movie Database API for each favorite movie
-        const moviepromises = movies.map(async (movie) =>{
+        const moviePromises = movies.map(async (movie) =>{
             const title = movie.title 
-            const url = `https//moviedatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie`
+            const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie`
             const options = {
                 method: 'GET',
                 headers: {
@@ -85,6 +84,11 @@ function MovieImage({ userId }) {
             const data = await response.json()
             return { title, image: data.results[0]?.primaryImage?.url }
         })
+
+        const movieData = await Promise.all(moviePromises)
+        console.log('Movie Data:', movieData)
+        setFavoriteMovies(movies)  
+        setFavoriteGenres(genres)
 
 
       } catch (error) {
@@ -114,13 +118,22 @@ function MovieImage({ userId }) {
         <p>Your Wishlist:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
-            <li key={index}>{movie}
+            <li key={index}>    
             <img src={movie.image} alt={movie.title} style={{width: '150px', height: 'auto'}} />
             <br />
             {movie.title}
             </li>
           ))}
         </ul>
+        <section id='user-movies'>
+        <h1 id='overskrift'>Your favorite genres!</h1>
+        <h2>Favorite Movies</h2>
+        <ul>
+          {favoriteMovies.map((movie, index) => (
+            <li key={index}>{movie}</li>
+          ))}
+        </ul>
+      </section>
       </section>
       <section id='user-genres'>
         <h1 id='overskrift'>Your favorite genres!</h1>
