@@ -73,8 +73,8 @@ import { faUser } from '@fortawesome/free-regular-svg-icons'
 export default function FrontPage() {
   library.add(faUser)
 
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState(null);
+  const [users, setUsers] = useState([])
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -88,7 +88,7 @@ export default function FrontPage() {
           body: JSON.stringify({
               query: '*[_type == "Users"]{_id, users, url}',
              }),
-        });
+        })
 
         if (!response.ok) {
           throw new Error('Network response was not ok')
@@ -125,7 +125,7 @@ export default function FrontPage() {
         </section>
       )}
     </>
-  );
+  )
 }
 
 

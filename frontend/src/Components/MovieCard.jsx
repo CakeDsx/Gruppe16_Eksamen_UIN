@@ -140,7 +140,7 @@ export default MovieImage
 //   )
 // }
 
-// export default MovieImage;
+// export default MovieImage
 
 
 
