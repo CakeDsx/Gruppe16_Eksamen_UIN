@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { faStar as fas, faStar as far } from '@fortawesome/free-solid-svg-icons'
+import { faStar as fab } from '@fortawesome/free-regular-svg-icons'
+
 
 function MovieImage() {
   library.add(fab, fas, far)
   const [imageUrls, setImageUrls] = useState([])
   const [movieTitles, setMovieTitles] = useState([])
+  const [isStarSolid, setisStarSolid] = useState([])
+
   
   useEffect(() => {
     async function fetchMovieImages() {
@@ -32,6 +34,9 @@ function MovieImage() {
         const sanityData = await sanityResponse.json()
         const titles = sanityData.result
         setMovieTitles(titles)
+
+
+        setisStarSolid(new Array(titles.length).fill(false))
 
         // Fetch movie images from RapidAPI using movie titles
         const imageUrls = await Promise.all(titles.map(async (title, index) => {
@@ -64,6 +69,8 @@ function MovieImage() {
           }
         }))
 
+        
+
         setImageUrls(imageUrls.filter(url => url)) // Filter out null values
       } catch (error) {
         console.error('Error:', error)
@@ -73,18 +80,30 @@ function MovieImage() {
     fetchMovieImages()
   }, [])
 
+  const toggleStar = (index) => {
+    const updatedStars = [...isStarSolid]
+    updatedStars[index] = !updatedStars[index]
+    setisStarSolid(updatedStars)
+  }
+
+ 
+
   return (
     <>
       <section id='user-movies'>
         <h1 id='overskrift'>Brukernavn sine filmer</h1>
         <h2><FontAwesomeIcon icon="fa-solid fa-star" /> Filmer jeg skal se!</h2>
+        
+
         <p>Disse filmene ligger i ønskelisten din:</p>
         {imageUrls.map((imageUrl, index) => (
           <article key={index}>
             {imageUrl && <img src={imageUrl} alt="Movie name" />}
             <h3>{movieTitles[index]}</h3>
-            <FontAwesomeIcon icon="fa-regular fa-star" />
-            <FontAwesomeIcon icon="fa-solid fa-star" />
+            <button onClick={() => toggleStar (index)}>
+              <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} />
+              </button>
+           
           </article>
         ))}
       </section>
