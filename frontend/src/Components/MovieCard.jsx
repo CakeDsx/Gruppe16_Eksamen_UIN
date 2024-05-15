@@ -12,6 +12,7 @@ function MovieImage() {
   useEffect(() => {
     async function fetchMovieImages() {
       try {
+        // Fetch movie titles from Sanity
         const sanityResponse = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
           method: 'POST',
           headers: {
@@ -30,28 +31,35 @@ function MovieImage() {
         const sanityData = await sanityResponse.json()
         const movieTitles = sanityData.result
 
-        const imageUrls = await Promise.all(movieTitles.map(async (slug) => {
-          const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${encodeURIComponent(slug)}?exact=true&titleType=movie`
+        // Fetch movie images from RapidAPI using movie titles
+        const imageUrls = await Promise.all(movieTitles.map(async (title, index) => {
+          console.log(`Fetching image for movie ${index + 1}: ${title}`)
+          const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${encodeURIComponent(title)}?exact=true&titleType=movie`
           const options = {
             method: 'GET',
             headers: {
               'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
               'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
             }
-          };
+          }
           const response = await fetch(url, options)
+          if (!response.ok) {
+            console.error(`Failed to fetch image for movie ${index + 1}: ${title}`)
+            return null
+          }
           const data = await response.json()
           const movie = data.results[0]
           
-       
+          // Check if movie is null before accessing its properties
           if (movie && movie.primaryImage) {
             return movie.primaryImage.url
           } else {
-            return null
+            console.error(`No image found for movie ${index + 1}: ${title}`)
+            return null // or any other default value
           }
-        }));
+        }))
 
-        setImageUrls(imageUrls)
+        setImageUrls(imageUrls.filter(url => url)) // Filter out null values
       } catch (error) {
         console.error('Error:', error)
       }
@@ -69,7 +77,7 @@ function MovieImage() {
         {imageUrls.map((imageUrl, index) => (
           <article key={index}>
             {imageUrl && <img src={imageUrl} alt="Movie name" />}
-            <h3>Movie title</h3> 
+            <h3>Movie title</h3> {/* You can replace this with dynamic movie titles */}
             <FontAwesomeIcon icon="fa-regular fa-star" />
             <FontAwesomeIcon icon="fa-solid fa-star" />
           </article>
@@ -83,7 +91,7 @@ function MovieImage() {
         </ul>
       </section>
     </>
-  );
+  )
 }
 
-export default MovieImage;
+export default MovieImage
