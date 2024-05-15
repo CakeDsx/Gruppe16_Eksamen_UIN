@@ -67,7 +67,7 @@
 
 
 import React, { useState, useEffect } from "react"
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 export default function MovieCard() {
@@ -114,13 +114,13 @@ export default function MovieCard() {
           {users.map((Users, index) => (
             <article key={index}>
                 <h3>{Users.users}</h3>
-              {/* <Link to={`https://www.imdb.com/title/${movie.id}`} target="_blank" alt={Users.title}> */}
+              <Link to={`http://localhost:5173/Home`} alt={Users.title}>
                 {Users.url && (
                   <img src={Users.url} alt={Users.title} />
                 )}  
                    
                 
-              {/* </Link> */}
+              </Link>
              
             </article>
           ))}
