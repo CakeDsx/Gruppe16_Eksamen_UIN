@@ -106,11 +106,11 @@ export default function MovieCard() {
 
   return (
     <>
-      <h2>Users</h2>
       {error ? (
         <div>{error}</div>
       ) : (
         <section>
+          <h1>Users</h1>
           {users.map((Users, index) => (
             <article key={index}>
                 <h3>{Users.users}</h3>
