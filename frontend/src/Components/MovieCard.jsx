@@ -35,14 +35,44 @@ function MovieImage() {
     }, [])
 
     return (
-        <section>
+      <>
+        <section id='user-movies'>
+          <h1 id='overskrift'>Brukernavn sine filmer</h1>
+            <h2><FontAwesomeIcon icon="fa-solid fa-star" /> Filmer jeg skal se!</h2>
+            <p>Disse filmene ligger i ønskelisten din:</p>
           <article>
             {imageUrl && <img src={imageUrl} alt="Movie name" />}
             <h3>Movie title</h3>
             <FontAwesomeIcon icon="fa-regular fa-star" />
             <FontAwesomeIcon icon="fa-solid fa-star" />
          </article>
+         <article>
+            {imageUrl && <img src={imageUrl} alt="Movie name" />}
+            <h3>Movie title</h3>
+            <FontAwesomeIcon icon="fa-regular fa-star" />
+            <FontAwesomeIcon icon="fa-solid fa-star" />
+         </article>
+         <article>
+            {imageUrl && <img src={imageUrl} alt="Movie name" />}
+            <h3>Movie title</h3>
+            <FontAwesomeIcon icon="fa-regular fa-star" />
+            <FontAwesomeIcon icon="fa-solid fa-star" />
+         </article>
+         <article>
+            {imageUrl && <img src={imageUrl} alt="Movie name" />}
+            <h3>Movie title</h3>
+            <FontAwesomeIcon icon="fa-regular fa-star" />
+            <FontAwesomeIcon icon="fa-solid fa-star" />
+         </article>
         </section>
+        <section id='users'>
+          <h2>Jeg skal se sammen med ...</h2>
+          <ul>
+            <li>Brukernavn</li>
+            <li>Brukernavn</li>
+          </ul>
+        </section>
+      </>
     );
 }
 
