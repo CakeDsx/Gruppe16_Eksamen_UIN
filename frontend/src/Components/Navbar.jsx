@@ -24,7 +24,6 @@ return(
     <>
     <nav>
         <Title />
-        <Link to="/FrontPage">WhatToSee</Link>
         <ul>            
             <li className="what-to-see">
                 <Link to="/Home">Hva skal jeg se?</Link>
@@ -33,7 +32,7 @@ return(
                 <Link to="/Genres">Bla gjennom sjangere</Link>
             </li>
             <li>
-                <Link to="/Home">Brukernavn</Link>
+                <Link to="/FrontPage">Brukernavn</Link>
             </li>
         </ul>
         </nav>
