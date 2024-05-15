@@ -48,7 +48,7 @@ function MovieImage({ userId }) {
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[_type == "Users" && _id == $userId]{favoriteMovies[]->{title}, favorittKategori[]->{Genre}}',
+            query: '*[_type == "Users" && _id == $userId]{favoriteMovies[]->{title}, favorittKategori[]->{Genre}, users[]->{users}}',
             params: { userId },
           }),
         })
@@ -58,14 +58,13 @@ function MovieImage({ userId }) {
         }
 
         const sanityData = await sanityResponse.json()
-        console.log('Sanity Data:', sanityData)
-
-        const movies = sanityData.result[0]?.favoriteMovies.map(movie => movie.title) || []
+        const movies = sanityData.result[0]?.favoriteMovies || []
         const genres = sanityData.result[0]?.favorittKategori.map(genre => genre.Genre) || []
+        const usersData = sanityData.result[0]?.users || []
 
         console.log('Favorite Movies:', movies)
         console.log('Favorite Genre:', genres)
-
+        console.log('Sanity Data:', sanityData)
 
         
 
@@ -77,8 +76,8 @@ function MovieImage({ userId }) {
                 method: 'GET',
                 headers: {
                     'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
-                    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-                }
+                    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+                },
             }
             const response = await fetch(url, options)
             const data = await response.json()
@@ -86,9 +85,11 @@ function MovieImage({ userId }) {
         })
 
         const movieData = await Promise.all(moviePromises)
-        console.log('Movie Data:', movieData)
-        setFavoriteMovies(movies, movieData)  
+        setFavoriteMovies(movieData)  
         setFavoriteGenres(genres)
+        //setUsers(usersData)
+        console.log('Movie Data:', movieData)
+        
 
 
       } catch (error) {
@@ -103,8 +104,8 @@ function MovieImage({ userId }) {
     // }
     // }, [mainUser])
 
-    // const handlemainUser = (userId) => {
-    //   setMainUser(userId)
+    //const handlemainUser = (userId) => {
+    //  setMainUser(userId)
     // }
 
   
@@ -112,22 +113,22 @@ function MovieImage({ userId }) {
 
   return (
     <>
-      <section id='user-movies'>
+      <section id="user-movies">
         <h1 id='overskrift'>Your favorite movies!</h1>
         <h2>ToWatch</h2>
         <p>Your Wishlist:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
-            <li key={index}> {movie} 
+            <li key={index}>
             <img src={movie.image} alt={movie.title} style={{width: '150px', height: 'auto'}} />
-            <br />
-            {movie.title}
+           
+           <p>{movie.title}</p>
             </li>
           ))}
         </ul>
       </section>
-      <section id='user-genres'>
-        <h1 id='overskrift'>Your favorite genres!</h1>
+      <section id="user-genres">
+        <h1>Your favorite genres!</h1>
         <h2>Favorite Genres</h2>
         <ul>
           {favoriteGenres.map((genre, index) => (
@@ -141,7 +142,7 @@ function MovieImage({ userId }) {
          {users.slice(0, 2).map((user) =>(  //REEEEEEEEEEEEE
         <li key = {user._id} onClick={() => handlemainUser(user._id)}>{user.users}</li> //i have never been so annoyed trying to find what was wrong....i missed = after onclick....
           ))} 
-        </ul> */}
+          </ul> */}
       </section>
     </>
   )
