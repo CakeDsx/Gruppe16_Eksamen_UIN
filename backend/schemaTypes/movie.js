@@ -24,12 +24,7 @@ export default {
   type: "array",
   of: [{type: 'reference', to:{type: 'kategori'}}]
 },
-{
-  name: "Users",
-  title: "users",
-  type: "array",
-  of: [{type: 'reference', to:{type: 'Users'}}]
-},
+
   ],
 }
     
