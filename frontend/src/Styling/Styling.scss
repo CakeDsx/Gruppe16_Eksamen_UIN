@@ -76,6 +76,7 @@ body{
 
     main{
         background-color: var(--grey-color);
+        justify-content: center;
 
         h2{
             color: var(--black-color);
@@ -87,7 +88,6 @@ body{
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 1rem 1.5rem;
-            //width: 50%;
 
             #overskrift{
                 width: 100%;
@@ -114,36 +114,7 @@ body{
             }
 
             article{
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                flex-grow: 2;
-                max-width: 340px;
-                margin: 1rem;
-                background-color: var(--blue-color);
-                border: var(--black-color) solid 0.3rem;
-
-                img{
-                    max-height: 300px;
-                }
-
-                h3{
-                    color: var(--white-color);
-                    margin: 0.7rem 0.5rem;
-                }
-
-                a{
-                    color: var(--grey-color);
-                    text-decoration: none;
-                    text-align: center;
-                    margin: 1rem;
-                }
-
-                svg{
-                    color: var(--yellow-color);
-                    align-self: flex-start;
-                    padding: 0.2rem 0.4rem;
-                }
+                @extend .article-styling;
             }
         }
 
@@ -151,6 +122,33 @@ body{
             ul{
                 align-items: flex-start;
                 margin: 0.5rem 2rem;
+            }
+        }
+
+        section{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 1rem 1.5rem;
+
+            h1{
+                width: 100%;
+                font-size: 1.8rem
+            }
+
+            article{
+                @extend .article-styling;
+            }
+
+            .user-card{
+                border: none;
+                border-radius: 20px;
+                background-color: var(--pink-color);
+
+                h3{
+                    color: var(--black-color);
+                }
             }
         }
 
@@ -181,13 +179,55 @@ body{
             display: flex;
             flex-wrap: wrap;
 
-            section{
+            #users, #user-movies{
                 width: 45%;
             }
 
             #users{
-                margin: 5rem 0;
+                flex-direction: column;
+                justify-content: flex-start;
+                margin: 5rem 1rem;
+                
             }
         }
+    }
+}
+
+//Styling for artikkelkort:
+.article-styling{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 2;
+    max-width: 340px;
+    margin: 1rem;
+    background-color: var(--blue-color);
+    border: var(--black-color) solid 0.3rem;
+    border-radius: 5px;
+
+    img{
+        max-height: 300px;
+    }
+
+    h3{
+        color: var(--white-color);
+        margin: 0.7rem 0.5rem;
+
+        svg{
+            color: var(--black-color)
+        }
+    }
+
+    a{
+        color: var(--grey-color);
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem;
+    }
+
+    svg{
+        color: var(--yellow-color);
+        align-self: flex-start;
+        padding: 0.2rem 0.4rem;
     }
 }

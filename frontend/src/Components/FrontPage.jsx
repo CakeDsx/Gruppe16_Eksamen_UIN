@@ -68,9 +68,15 @@
 
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 
 
 export default function MovieCard() {
+  library.add(fab, fas, far)
 
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
@@ -112,8 +118,8 @@ export default function MovieCard() {
         <section>
           <h1>Users</h1>
           {users.map((Users, index) => (
-            <article key={index}>
-                <h3>{Users.users}</h3>
+            <article className="user-card" key={index}>
+                <h3><FontAwesomeIcon icon="fa-regular fa-user" />{Users.users}</h3>
               <Link to={`http://localhost:5173/Home`} alt={Users.title}>
                 {Users.url && (
                   <img src={Users.url} alt={Users.title} />
