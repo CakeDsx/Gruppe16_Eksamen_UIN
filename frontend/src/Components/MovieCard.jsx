@@ -87,7 +87,7 @@ function MovieImage({ userId }) {
 
         const movieData = await Promise.all(moviePromises)
         console.log('Movie Data:', movieData)
-        setFavoriteMovies(movies)  
+        setFavoriteMovies(movies, movieData)  
         setFavoriteGenres(genres)
 
 
@@ -118,22 +118,13 @@ function MovieImage({ userId }) {
         <p>Your Wishlist:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
-            <li key={index}>    
+            <li key={index}> {movie} 
             <img src={movie.image} alt={movie.title} style={{width: '150px', height: 'auto'}} />
             <br />
             {movie.title}
             </li>
           ))}
         </ul>
-        <section id='user-movies'>
-        <h1 id='overskrift'>Your favorite genres!</h1>
-        <h2>Favorite Movies</h2>
-        <ul>
-          {favoriteMovies.map((movie, index) => (
-            <li key={index}>{movie}</li>
-          ))}
-        </ul>
-      </section>
       </section>
       <section id='user-genres'>
         <h1 id='overskrift'>Your favorite genres!</h1>
