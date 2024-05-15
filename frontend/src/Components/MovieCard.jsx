@@ -5,7 +5,7 @@ function MovieImage({ userId }) {
   const [favoriteMovies, setFavoriteMovies] = useState([])
 
   useEffect(() => {
-    async function fetchFavoriteMoviesForUser(userId) {
+    async function fetchUserInfo(userId) {
       try {
         // Fetch user's favorite movies from Sanity
         const sanityResponse = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
@@ -18,7 +18,7 @@ function MovieImage({ userId }) {
             query: '*[_type == "Users" && _id == $userId]{favoriteMovies[]->{title}}',
             params: { userId },
           }),
-        });
+        })
 
         if (!sanityResponse.ok) {
           throw new Error('Sanity API request failed')
@@ -38,15 +38,15 @@ function MovieImage({ userId }) {
     }
 
   
-    fetchFavoriteMoviesForUser(userId)
+    fetchUserInfo(userId)
   }, [userId])
 
   return (
     <>
       <section id='user-movies'>
-        <h1 id='overskrift'>Brukernavn sine filmer</h1>
-        <h2>Filmer jeg skal se!</h2>
-        <p>Disse filmene ligger i ønskelisten din:</p>
+        <h1 id='overskrift'>Your favorite movies!</h1>
+        <h2>ToWatch</h2>
+        <p>Your Wishlist:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
             <li key={index}>{movie}</li>
