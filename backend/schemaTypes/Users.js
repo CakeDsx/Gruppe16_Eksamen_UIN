@@ -4,13 +4,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'id',
-      title: 'ID',
-      type: 'string',
-      validation: Rule => Rule.required().unique(),
-      hidden: true // Hide this field from the CMS
-    },
-    {
       name: 'users',
       title: 'User_Names',
       type: 'string'
@@ -33,7 +26,6 @@ export default {
       title: "FavoriteMovies",
       type: "array",
       of: [{type: 'reference', to:{type: 'movie'}}]
-      
     },
     {
       name: "favorittKategori",
