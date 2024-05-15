@@ -18,7 +18,7 @@ function MovieImage({ userId }) {
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[type == "Users" && _id != $userId]{_id, users}' ,
+            query: '*[_type == "Users" && _id != $userId]{_id, users}' ,
             params: { userId },
           }),
         })
