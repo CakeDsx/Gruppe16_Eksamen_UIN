@@ -8,6 +8,7 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 function MovieImage() {
   library.add(fab, fas, far)
   const [imageUrls, setImageUrls] = useState([])
+  const [movieTitles, setMovieTitles] = useState([])
   
   useEffect(() => {
     async function fetchMovieImages() {
@@ -29,10 +30,11 @@ function MovieImage() {
         }
 
         const sanityData = await sanityResponse.json()
-        const movieTitles = sanityData.result
+        const titles = sanityData.result
+        setMovieTitles(titles)
 
         // Fetch movie images from RapidAPI using movie titles
-        const imageUrls = await Promise.all(movieTitles.map(async (title, index) => {
+        const imageUrls = await Promise.all(titles.map(async (title, index) => {
           console.log(`Fetching image for movie ${index + 1}: ${title}`)
           const params = new URLSearchParams()
           params.append('exact', 'true')
@@ -80,7 +82,7 @@ function MovieImage() {
         {imageUrls.map((imageUrl, index) => (
           <article key={index}>
             {imageUrl && <img src={imageUrl} alt="Movie name" />}
-            <h3>Movie title</h3> {/* You can replace this with dynamic movie titles */}
+            <h3>{movieTitles[index]}</h3>
             <FontAwesomeIcon icon="fa-regular fa-star" />
             <FontAwesomeIcon icon="fa-solid fa-star" />
           </article>
