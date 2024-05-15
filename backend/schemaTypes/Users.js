@@ -4,18 +4,31 @@ export default {
     type: 'document',
     fields: [
       {
-        name: 'Users',
+        name: 'users',
         title: 'User_Names',
         type: 'string'
       },
       {
-        name: "FavoriteMovies",
+        name: "mainImage",
+        title: "Main_image",
+        type: "image",
+        options: {
+          hotspot: true
+        }
+      },
+      {
+        name: "url",
+        title: "Url",
+        type: "string",
+      },
+      {
+        name: "favoriteMovies",
         title: "FavoriteMovies",
         type: "array",
         of: [{type: 'reference', to:{type: 'movie'}}]
     },
     {
-        name: "FavorittKategori",
+        name: "favorittKategori",
         title: "FavoriteGenres",
         type: "array",
         of: [{type: 'reference', to:{type: 'kategori'}}]
