@@ -37,7 +37,7 @@ function MovieImage() {
     return (
         <section>
           <article>
-            {imageUrl && <img src={imageUrl} alt="Movie" />}
+            {imageUrl && <img src={imageUrl} alt="Movie name" />}
             <h3>Movie title</h3>
             <FontAwesomeIcon icon="fa-regular fa-star" />
             <FontAwesomeIcon icon="fa-solid fa-star" />
