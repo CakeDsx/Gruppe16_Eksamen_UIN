@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 function MovieImage({ userId }) {
   const [favoriteMovies, setFavoriteMovies] = useState([])
+  const [favoriteGenres, setFavoriteGenres] = useState([])
 
   useEffect(() => {
     async function fetchUserInfo(userId) {
@@ -15,7 +16,7 @@ function MovieImage({ userId }) {
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[_type == "Users" && _id == $userId]{favoriteMovies[]->{title}}',
+            query: '*[_type == "Users" && _id == $userId]{favoriteMovies[]->{title}, favorittKategori[]->{Genre}}',
             params: { userId },
           }),
         })
@@ -28,9 +29,15 @@ function MovieImage({ userId }) {
         console.log('Sanity Data:', sanityData)
 
         const movies = sanityData.result[0]?.favoriteMovies.map(movie => movie.title) || []
+        const genres = sanityData.result[0]?.favorittKategori.map(genre => genre.Genre) || []
+
         console.log('Favorite Movies:', movies)
+        console.log('Favorite Genre:', genres)
+
 
         setFavoriteMovies(movies)
+        setFavoriteGenres(genres)
+
 
       } catch (error) {
         console.error('Error:', error)
@@ -51,6 +58,22 @@ function MovieImage({ userId }) {
           {favoriteMovies.map((movie, index) => (
             <li key={index}>{movie}</li>
           ))}
+        </ul>
+      </section>
+      <section id='user-genres'>
+        <h1 id='overskrift'>Your favorite genres!</h1>
+        <h2>Favorite Genres</h2>
+        <ul>
+          {favoriteGenres.map((genre, index) => (
+            <li key={index}>{genre}</li>
+          ))}
+        </ul>
+      </section>
+      <section id='users'>
+        <h2>I'm watching with...</h2>
+        <ul>
+         <li>Brukernavn</li>
+         <li>Brukernavn</li>
         </ul>
       </section>
     </>
