@@ -34,7 +34,10 @@ function MovieImage() {
         // Fetch movie images from RapidAPI using movie titles
         const imageUrls = await Promise.all(movieTitles.map(async (title, index) => {
           console.log(`Fetching image for movie ${index + 1}: ${title}`)
-          const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${encodeURIComponent(title)}?exact=true&titleType=movie`
+          const params = new URLSearchParams()
+          params.append('exact', 'true')
+          params.append('titleType', 'movie')
+          const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?${params.toString()}`
           const options = {
             method: 'GET',
             headers: {

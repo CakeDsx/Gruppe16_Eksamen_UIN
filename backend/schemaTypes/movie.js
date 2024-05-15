@@ -16,7 +16,6 @@ export default {
     options: {
       source: 'title',
       maxLength: 96,
-      slugify: (input) => input.toLowerCase().replace(/\s+/g, '%20')
     }
 },
 {
