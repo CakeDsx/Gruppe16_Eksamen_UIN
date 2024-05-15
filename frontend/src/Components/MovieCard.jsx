@@ -70,6 +70,22 @@ function MovieImage({ userId }) {
         setFavoriteMovies(movies)
         setFavoriteGenres(genres)
 
+        //fetches movie images from Movie Database API for each favorite movie
+        const moviepromises = movies.map(async (movie) =>{
+            const title = movie.title 
+            const url = `https//moviedatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie`
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
+                    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+                }
+            }
+            const response = await fetch(url, options)
+            const data = await response.json()
+            return { title, image: data.results[0]?.primaryImage?.url }
+        })
+
 
       } catch (error) {
         console.error('Error:', error)
@@ -98,7 +114,11 @@ function MovieImage({ userId }) {
         <p>Your Wishlist:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
-            <li key={index}>{movie}</li>
+            <li key={index}>{movie}
+            <img src={movie.image} alt={movie.title} style={{width: '150px', height: 'auto'}} />
+            <br />
+            {movie.title}
+            </li>
           ))}
         </ul>
       </section>
