@@ -38,7 +38,6 @@ export default function Layout({children}){
     return(
         <>
         <header>
-            <h1>Movie Search</h1>
             <Navbar/> 
         </header>
        
