@@ -3,7 +3,7 @@ import {Link } from "react-router-dom"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
 import Title from "./Title"
 
-export default function Navbar(){
+export default function Navbar(userID, userName){
     const [active, setActive] = useState()
     const[movieList, setMovieList] = useState(null)
 

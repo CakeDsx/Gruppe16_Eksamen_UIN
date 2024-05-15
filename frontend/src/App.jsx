@@ -1,5 +1,3 @@
-
-
 import FrontPage from './Components/FrontPage'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './Components/Layout'
@@ -10,25 +8,18 @@ import './App.css'
 import './Styling/Styling.scss'
 
 function App() {
-
   return (
-   <>
-  
-<Layout>
-      <Routes>
-        <Route path="/" element = { <FrontPage />} />
-        <Route path="/FrontPage" element = { <FrontPage /> } />
-        <Route path="/Home" element = { <Home /> } />
-        <Route path="/Genres" element = { <GenrePage /> } />
-
-
-        <Route path="*" element={<NoPage />} />
-      </Routes>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/FrontPage" element={<FrontPage />} />
+          <Route path="/Home/:userId" element={<Home />} />
+          <Route path="/Genres" element={<GenrePage />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
       </Layout>
-
-    
-      
-      </>
+    </>
   )
 }
 
