@@ -29,10 +29,12 @@ function MovieImage() {
     }, [])
 
     return (
-        <div>
+        <section>
+          <article>
             <h1>Movie Image</h1>
             {imageUrl && <img src={imageUrl} alt="Movie" />}
-        </div>
+         </article>
+        </section>
     );
 }
 
