@@ -145,6 +145,31 @@ body{
             }
         }
 
+        #user-genres{
+            flex-direction: column;
+            justify-content: flex-start;
+
+            h2{
+                width: 100%;
+                font-size: 1.8rem;
+                margin: 2rem 1rem 0.9rem 1rem;
+            }
+
+            ul{
+                align-items: flex-start;
+
+                li{
+                    margin: 0.6rem;
+                    padding: 0.5rem 0 0.2rem 0;
+
+                    svg{
+                        font-size: 0.8rem;
+                        margin: 0 0.3rem 0 0;
+                    }
+                }
+            }
+        }
+
         #users{
             ul{
                 align-items: flex-start;
