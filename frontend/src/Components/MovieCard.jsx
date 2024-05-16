@@ -1,7 +1,13 @@
-
 import React, { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
 
 function MovieImage({ userId }) {
+  library.add(fab, fas, far)
   const [favoriteMovies, setFavoriteMovies] = useState([])
   const [favoriteGenres, setFavoriteGenres] = useState([])
   // const [users, setUsers] = useState([])
@@ -133,11 +139,10 @@ function MovieImage({ userId }) {
         </ul>
       </section>
       <section id="user-genres">
-        <h1>Your favorite genres!</h1>
-        <h2>Favorite Genres</h2>
+        <h2>Your favorite genres!</h2>
         <ul>
           {favoriteGenres.map((genre, index) => (
-            <li key={index}>{genre}</li>
+            <li key={index}><FontAwesomeIcon icon="fa-solid fa-star" />{genre}</li>
           ))}
         </ul>
       </section>
