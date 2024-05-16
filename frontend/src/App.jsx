@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<FrontPage />} />
           <Route path="/FrontPage" element={<FrontPage />} />
           <Route path="/Home/:userId" element={<Home />} />
-          <Route path="/Genres" element={<GenrePage />} />
+          <Route path="/Genres/:userId" element={<GenrePage />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </Layout>

@@ -103,6 +103,7 @@ function MovieImage({ userId }) {
 
     fetchUserInfo(userId)
   }, [userId])
+  console.log(userId)
     // if (mainUser){
     //   fetchUserInfo(mainUser)
     // }
