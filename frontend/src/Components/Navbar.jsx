@@ -2,8 +2,12 @@ import {useEffect, useState } from "react"
 import {Link } from "react-router-dom"
 import { fetchAllMovies } from "../../sanity/services/movieServices"
 import Title from "./Title"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
 
 export default function Navbar(userID, userName){
+    library.add(faUser)
     const [active, setActive] = useState()
     const[movieList, setMovieList] = useState(null)
 
@@ -32,7 +36,7 @@ return(
                 <Link to="/Genres">Bla gjennom sjangere</Link>
             </li>
             <li>
-                <Link to="/FrontPage">Brukernavn</Link>
+                <Link to="/FrontPage"><FontAwesomeIcon icon={faUser} />Bruker</Link>
             </li>
         </ul>
         </nav>

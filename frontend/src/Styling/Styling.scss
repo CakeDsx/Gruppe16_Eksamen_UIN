@@ -68,6 +68,10 @@ body{
                     a{
                         color: var(--white-color);
                         text-decoration: none;
+                        
+                        svg{
+                            margin: 0 0.3rem 0 0;
+                        }
                     }
                 }
             }
