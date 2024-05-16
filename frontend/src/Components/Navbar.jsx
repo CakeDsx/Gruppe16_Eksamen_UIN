@@ -6,11 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 
+
 export default function Navbar({  }) {
     library.add(faUser)
     const [active, setActive] = useState()
     const [movieList, setMovieList] = useState(null)
     const { userId } = useParams()
+    const [users, setUsers] = useState([])
+
    
 
     const getAllMovies = async () => {
@@ -32,11 +35,15 @@ export default function Navbar({  }) {
                 
                 <ul> 
                     <li className="what-to-see">
-                        <Link to={`/Home/${userId}`}>Hva skal jeg se?</Link>
+                        {/* <Link to={`/Home/${userId}`}>Hva skal jeg se?</Link> */}
+                        <Link to href={`http://localhost:5173/Home/${userId}/`} target="_blank" rel="noopener noreferrer"> what to watch </Link>
+
                     </li>
                     
                     <li>  
-                        <Link to={`/Genres/${userId}`}>Bla gjennom sjangere</Link>
+                        {/* <Link to={`/Genres/${userId}`}>Bla gjennom sjangere</Link> */}
+                       <Link to href={`http://localhost:5173/Genres/${userId}/`} target="_blank" rel="noopener noreferrer"> Genres </Link>
+
                     </li>
                     
                     <li>
