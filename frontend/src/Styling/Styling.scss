@@ -111,6 +111,13 @@ body{
                 }
             }
 
+            #favorites{
+                width: 100%;
+                font-size: 1.8rem;
+                text-align: left;
+                margin: 2rem 1rem 0.9rem 1rem;
+            }
+
             p{
                 margin: 0.2rem 1rem;
                 width: 100%;
@@ -171,9 +178,22 @@ body{
         }
 
         #users{
+
+            h2{
+                width: 100%;
+                font-size: 1.8rem;
+                margin: 2rem 1rem 0.9rem 1rem;
+                text-align: left;
+            }
+            
             ul{
                 align-items: flex-start;
                 margin: 0.5rem 2rem;
+
+                li{
+                    margin: 0.6rem;
+                    padding: 0.5rem 0 0.2rem 0;
+                }
             }
         }
 
@@ -230,7 +250,7 @@ body{
         main{
             display: flex;
             flex-wrap: wrap;
-            justify-content: left;
+            justify-content: center;
 
             #user-movies, #user-genres{
                 width: 45%;
@@ -240,8 +260,8 @@ body{
             #users{
                 flex-direction: column;
                 justify-content: flex-start;
-                margin: 5rem 1rem;
-                width: 45%;  
+                margin: 0.5rem;
+                width: 35%;  
             }
         }
     }

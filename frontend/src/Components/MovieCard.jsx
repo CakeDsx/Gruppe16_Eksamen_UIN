@@ -107,8 +107,7 @@ function MovieImage({ userId }) {
   return (
     <>
       <section id="user-movies">
-        <h1 id='overskrift'>Your favorite movies!</h1>
-        <h2>To Watch</h2>
+        <h1 id='overskrift'>Movies you want to watch!</h1>
         <p>Your Wishlist:</p>
         <ul>
           {wishList.map((movie, index) => (
@@ -120,7 +119,8 @@ function MovieImage({ userId }) {
             </li>
           ))}
         </ul>
-        <p>Your Favorite Movies</p>
+        <h2 id='favorites'>Your favorite movies!</h2>
+        <p>Favorites:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
             <li key={index}>
@@ -132,16 +132,20 @@ function MovieImage({ userId }) {
           ))}
         </ul>
       </section>
-      <section id="user-genres">
+      {/*<section id="user-genres">
         <h1>Your favorite genres!</h1>
         <ul>
           {favoriteGenres.map((genre, index) => (
             <li key={index}>{genre}</li>
           ))}
         </ul>
-      </section>
+      </section>*/}
       <section id='users'>
         <h2>I'm watching with...</h2>
+        <ul>
+          <li>Brukernavn</li>
+          <li>Brukernavn</li>
+        </ul>
         {/* <ul>
          {users.slice(0, 2).map((user) =>(  //REEEEEEEEEEEEE
         <li key = {user._id} onClick={() => handlemainUser(user._id)}>{user.users}</li> //i have never been so annoyed trying to find what was wrong....i missed = after onclick....
