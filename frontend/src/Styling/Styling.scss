@@ -113,8 +113,15 @@ body{
                 text-align: left;
             }
 
-            article{
-                @extend .article-styling;
+            ul{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                li{
+                    width: fit-content;
+                    margin: 0.5rem;
+                }
             }
         }
 
@@ -178,16 +185,18 @@ body{
         main{
             display: flex;
             flex-wrap: wrap;
+            justify-content: left;
 
-            #users, #user-movies{
+            #user-movies, #user-genres{
                 width: 45%;
+                margin: 0.5rem;
             }
 
             #users{
                 flex-direction: column;
                 justify-content: flex-start;
                 margin: 5rem 1rem;
-                
+                width: 45%;  
             }
         }
     }
