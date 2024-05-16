@@ -31,7 +31,9 @@ function MovieImage({ userId }) {
         }
 
         const userData = await response.json()
+        console.log(userData)
         setUsers(userData.result)
+        console.log(userId)
       } catch (error){
         console.error('Error', error)
       }
