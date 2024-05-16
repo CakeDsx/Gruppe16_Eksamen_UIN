@@ -7,6 +7,8 @@ import { faStar as fab } from '@fortawesome/free-regular-svg-icons'
 export default function Genres() {
   const [genres, setGenres] = useState([])
   const [error, setError] = useState(null)
+  const [selectedGenre, setSelectedGenre] = useState(null)
+  const [movies, setMovies] = useState([])
   const [isStarSolid, setisStarSolid] = useState([])
   library.add(fab, fas, far)
 
@@ -20,57 +22,66 @@ export default function Genres() {
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[_type == "kategori"]{_id, Genre}' ,
-            
-            
+            query: '*[_type == "kategori"]{_id, Genre, "movies": *[_type == "movie" && references(^._id)]{_id, title}}',
           }),
         })
 
-        if(!response.ok){
-          throw new Error('failed to fetch user info')
+        if (!response.ok) {
+          throw new Error('Failed to fetch user info')
         }
 
         const userData = await response.json()
         setGenres(userData.result)
-        console.log(userData)
-      } catch (error){
+        setisStarSolid(new Array(userData.result.length).fill(false))
+      } catch (error) {
         console.error('Error', error)
+        setError(error.message)
       }
     }
-
-    setisStarSolid(new Array(genres.length).fill(false))
 
     fetchGenres()
   }, [])
 
   const toggleStar = (index) => {
-            const updatedStars = [...isStarSolid]
-            updatedStars[index] = !updatedStars[index]
-            setisStarSolid(updatedStars)
-          }
+    const updatedStars = [...isStarSolid]
+    updatedStars[index] = !updatedStars[index]
+    setisStarSolid(updatedStars)
+  }
+
+  const handleGenreClick = (genre) => {
+    setSelectedGenre(genre)
+    setMovies(genre.movies)
+  }
 
   return (
     <>
       <h1>Genres</h1>
       {error && <p>{error}</p>}
       <ul>
-      {genres
-        ? genres
-          .filter((genre, index) => index > 0)
-          .map((genre, index) => (
-          <li key={genre._id}>{genre.Genre}                               
-           <button onClick={() => toggleStar (index)}>
+        {genres.map((genre, index) => (
+          <li key={genre._id}>
+            <button onClick={() => handleGenreClick(genre)}>
+              {genre.Genre}
               <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} />
-             </button>
-             </li>
-        ))
-    :null
-    }
+            </button>
+          </li>
+        ))}
       </ul>
+      <div>
+        {selectedGenre && (
+          <>
+            <h2>{selectedGenre.Genre}</h2>
+            <ul>
+              {movies.map((movie) => (
+                <li key={movie._id}>{movie.title}</li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </>
   )
 }
-
 
 
 // import React, { useEffect, useState } from "react"
