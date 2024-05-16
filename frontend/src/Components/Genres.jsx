@@ -22,6 +22,7 @@ export default function Genres() {
           body: JSON.stringify({
             query: '*[_type == "kategori"]{_id, Genre}' ,
             
+            
           }),
         })
 
