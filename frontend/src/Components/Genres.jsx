@@ -55,7 +55,7 @@ export default function Genres() {
       {genres
         ? genres
           .filter((genre, index) => index > 0)
-          .map((genre) => (
+          .map((genre, index) => (
           <li key={genre._id}>{genre.Genre}                               
           <span>{index + 1}. {genres}</span>
            <button onClick={() => toggleStar (index)}>
