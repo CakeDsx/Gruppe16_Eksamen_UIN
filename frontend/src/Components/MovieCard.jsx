@@ -68,7 +68,6 @@ function MovieImage({ userId }) {
 
         
 
-        //fetches movie images from Movie Database API for each favorite movie
         const moviePromises = movies.map(async (movie) =>{
             const title = movie.title 
             const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie`
@@ -81,8 +80,13 @@ function MovieImage({ userId }) {
             }
             const response = await fetch(url, options)
             const data = await response.json()
-            return { title, image: data.results[0]?.primaryImage?.url }
+            return { 
+                title, 
+                image: data.results[0]?.primaryImage?.url,
+                id: data.results[0]?.id
+            }
         })
+        
 
         const movieData = await Promise.all(moviePromises)
         setFavoriteMovies(movieData)  
@@ -120,8 +124,9 @@ function MovieImage({ userId }) {
         <ul>
           {favoriteMovies.map((movie, index) => (
             <li key={index}>
-            <img src={movie.image} alt={movie.title} style={{width: '150px', height: 'auto'}} />
-           
+            <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
+            <img src={movie.image} alt={movie.title}/>
+            </a>
            <p>{movie.title}</p>
             </li>
           ))}
