@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStar as fas, faStar as far } from '@fortawesome/free-solid-svg-icons'
+import { faStar as fab } from '@fortawesome/free-regular-svg-icons'
 
 export default function Genres() {
-  const [genres, setGenres] = useState([]);
-  const [error, setError] = useState(null);
+  const [genres, setGenres] = useState([])
+  const [error, setError] = useState(null)
+  const [isStarSolid, setisStarSolid] = useState([])
+  library.add(fab, fas, far)
 
   useEffect(() => {
     async function fetchGenres() {
@@ -30,17 +36,35 @@ export default function Genres() {
       }
     }
 
+    setisStarSolid(new Array(genres.length).fill(false))
+
     fetchGenres()
   }, [])
+
+  const toggleStar = (index) => {
+            const updatedStars = [...isStarSolid]
+            updatedStars[index] = !updatedStars[index]
+            setisStarSolid(updatedStars)
+          }
 
   return (
     <>
       <h1>Genres</h1>
       {error && <p>{error}</p>}
       <ul>
-        {genres.map((genre) => (
-          <li key={genre._id}>{genre.Genre}</li>
-        ))}
+      {genres
+        ? genres
+          .filter((genre, index) => index > 0)
+          .map((genre) => (
+          <li key={genre._id}>{genre.Genre}                               
+          <span>{index + 1}. {genres}</span>
+           <button onClick={() => toggleStar (index)}>
+              <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} />
+             </button>
+             </li>
+        ))
+    :null
+    }
       </ul>
     </>
   )
