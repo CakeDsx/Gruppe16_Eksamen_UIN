@@ -57,7 +57,6 @@ export default function Genres() {
           .filter((genre, index) => index > 0)
           .map((genre, index) => (
           <li key={genre._id}>{genre.Genre}                               
-          <span>{index + 1}. {genres}</span>
            <button onClick={() => toggleStar (index)}>
               <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} />
              </button>
