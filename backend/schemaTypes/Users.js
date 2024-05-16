@@ -28,6 +28,12 @@ export default {
       of: [{type: 'reference', to:{type: 'movie'}}]
     },
     {
+      name: "wishList",
+      title: "wishList",
+      type: "array",
+      of: [{type: 'reference', to:{type: 'movie'}}]
+    },
+    {
       name: "favorittKategori",
       title: "FavoriteGenres",
       type: "array",
