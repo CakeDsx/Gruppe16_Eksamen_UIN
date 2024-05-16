@@ -31,6 +31,7 @@ export default function Genres() {
 
         const userData = await response.json()
         setGenres(userData.result)
+        console.log(userData)
       } catch (error){
         console.error('Error', error)
       }
