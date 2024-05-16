@@ -109,7 +109,7 @@ function MovieImage({ userId }) {
   return (
     <>
       <section id="user-movies">
-        <h1 id='overskrift'>Movies you want to watch!</h1>
+        <h1 id='overskrift'>Movies to watch!</h1>
         <p>Your Wishlist:</p>
         <ul>
           {wishList.map((movie, index) => (
