@@ -148,7 +148,7 @@ function MovieImage({ userId }) {
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error}</p>
   return (
-    <div>
+    <>
       <section id="user-movies">
         <h1 id="overskrift">Movies to watch!</h1>
         <p>Your Wishlist:</p>
@@ -212,8 +212,7 @@ function MovieImage({ userId }) {
     </ul>
   </section>
 )}
-
-    </div>
+  </>
   )
 }
 

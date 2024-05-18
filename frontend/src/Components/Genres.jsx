@@ -79,7 +79,7 @@ export default function Genres() {
 
   return (
     <>
-      <h1>Genres</h1>
+      <h1 id='sjanger-overskrift'>Genres</h1>
       {error && <p>{error}</p>}
       <ul>
         {genres.map((genre, index) => (

@@ -82,6 +82,10 @@ body{
         background-color: var(--grey-color);
         justify-content: center;
 
+        #sjanger-overskrift{
+            width: 100%;
+        }
+
         h2{
             color: var(--black-color);
         }
@@ -128,6 +132,7 @@ body{
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
+                align-items: baseline;
 
                 li{
                     margin: 0.6rem;
@@ -147,6 +152,7 @@ body{
                     p{
                         text-align: center;
                         margin: 0.4rem 0;
+                        max-width: 197.88px;
                     }
                 }
             }
@@ -193,6 +199,47 @@ body{
                 li{
                     margin: 0.6rem;
                     padding: 0.5rem 0 0.2rem 0;
+                }
+            }
+        }
+
+        #comparison{
+            h2{
+                width: 100%;
+                font-size: 1.8rem;
+                margin: 2rem 1rem 0.9rem 0;
+                text-align: left;
+            }
+
+            h3{
+                width: 100%;
+                text-align: left;
+            }
+
+            ul{
+                flex-direction: row;
+                margin: 0;
+                width: 50%;
+
+                li{
+                    margin: 0.6rem;
+                    border-bottom: none;
+
+                    a{
+                        display: flex;
+
+                        img{
+                            max-width: 200px;
+                            max-height: 280px;
+                            border: var(--black-color) solid;
+                            border-radius: 5px;
+                        }
+                    }
+
+                    p{
+                        text-align: center;
+                        margin: 0.4rem 0;
+                    }
                 }
             }
         }
@@ -250,6 +297,7 @@ body{
         main{
             display: flex;
             flex-wrap: wrap;
+            flex-direction: row;
             justify-content: center;
 
             #user-movies, #user-genres{
@@ -262,6 +310,19 @@ body{
                 justify-content: flex-start;
                 margin: 0.5rem;
                 width: 35%;  
+                max-height: 300px;
+            }
+
+            #comparison{
+
+                h3{
+                    width: 50%;
+                    order: 1;
+                }
+
+                ul{
+                    order: 2;
+                }
             }
         }
     }
