@@ -1,5 +1,3 @@
-// Inside your Genres component
-
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -29,7 +27,7 @@ export default function Genres() {
         })
 
         if (!response.ok) {
-          throw new Error('Failed to fetch user info')
+          throw new Error('Failed to fetch genre info')
         }
 
         const userData = await response.json()
@@ -50,7 +48,7 @@ export default function Genres() {
     setisStarSolid(updatedStars)
   }
 
-  const handleGenreClick = async (genre) => {
+  const genClick = async (genre) => {
     setSelectedGenre(genre)
     try {
       const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
@@ -84,7 +82,7 @@ export default function Genres() {
       <ul>
         {genres.map((genre, index) => (
           <li key={genre._id}>
-            <button onClick={() => handleGenreClick(genre)}>
+            <button onClick={() => genClick(genre)}>
               {genre.Genre}
               <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} />
             </button>
