@@ -317,7 +317,6 @@ body{
             #comparison-section{
                 width: 50%;
                 margin: 0 0 0 2rem;
-                //border-left: var(--black-color) solid 2px;
 
                 #users{
                 justify-content: flex-start;
@@ -329,11 +328,6 @@ body{
 
                     h3{
                         width: 100%;
-                        //order: 1;
-                    }
-
-                    ul{
-                        //order: 2;
                     }
                 }
             }
