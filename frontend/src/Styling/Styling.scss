@@ -79,8 +79,10 @@ body{
     }
 
     main{
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
         background-color: var(--grey-color);
-        justify-content: center;
 
         #sjanger-overskrift{
             width: 100%;
@@ -183,62 +185,70 @@ body{
             }
         }
 
-        #users{
+        #comparison-section{
 
-            h2{
-                width: 100%;
-                font-size: 1.8rem;
-                margin: 2rem 1rem 0.9rem 1rem;
-                text-align: left;
-            }
-            
-            ul{
-                align-items: flex-start;
-                margin: 0.5rem 2rem;
+            #users{
+                padding: 0 0 0 1rem;
 
-                li{
-                    margin: 0.6rem;
-                    padding: 0.5rem 0 0.2rem 0;
+                h2{
+                    width: 100%;
+                    font-size: 1.8rem;
+                    margin: 2rem 1rem 0.9rem 1rem;
+                    text-align: left;
+                }
+                
+                ul{
+                    align-items: flex-start;
+                    margin: 0.5rem 2rem;
+
+                    li{
+                        margin: 0.6rem;
+                        padding: 0.5rem 0 0.2rem 0;
+                    }
                 }
             }
-        }
 
-        #comparison{
-            h2{
-                width: 100%;
-                font-size: 1.8rem;
-                margin: 2rem 1rem 0.9rem 0;
-                text-align: left;
-            }
+            #comparison{
+                border: var(--black-color) solid 2px;
+                border-radius: 10px;
+                padding: 0 0 0 1rem;
 
-            h3{
-                width: 100%;
-                text-align: left;
-            }
+                h2{
+                    width: 100%;
+                    font-size: 1.8rem;
+                    margin: 2rem 1rem 0.9rem 0;
+                    text-align: left;
+                }
 
-            ul{
-                flex-direction: row;
-                margin: 0;
-                width: 50%;
+                h3{
+                    width: 100%;
+                    text-align: left;
+                }
 
-                li{
-                    margin: 0.6rem;
-                    border-bottom: none;
+                ul{
+                    flex-direction: row;
+                    margin: 0;
+                    width: 50%;
 
-                    a{
-                        display: flex;
+                    li{
+                        margin: 0.6rem;
+                        border-bottom: none;
 
-                        img{
-                            max-width: 200px;
-                            max-height: 280px;
-                            border: var(--black-color) solid;
-                            border-radius: 5px;
+                        a{
+                            display: flex;
+
+                            img{
+                                max-width: 200px;
+                                max-height: 280px;
+                                border: var(--black-color) solid;
+                                border-radius: 5px;
+                            }
                         }
-                    }
 
-                    p{
-                        text-align: center;
-                        margin: 0.4rem 0;
+                        p{
+                            text-align: center;
+                            margin: 0.4rem 0;
+                        }
                     }
                 }
             }
@@ -248,7 +258,6 @@ body{
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
             margin: 1rem 1.5rem;
 
             h1{
@@ -305,23 +314,27 @@ body{
                 margin: 0.5rem;
             }
 
-            #users{
-                flex-direction: column;
+            #comparison-section{
+                width: 50%;
+                margin: 0 0 0 2rem;
+                //border-left: var(--black-color) solid 2px;
+
+                #users{
                 justify-content: flex-start;
                 margin: 0.5rem;
-                width: 35%;  
-                max-height: 300px;
-            }
-
-            #comparison{
-
-                h3{
-                    width: 50%;
-                    order: 1;
+                width: fit-content;
                 }
 
-                ul{
-                    order: 2;
+                #comparison{
+
+                    h3{
+                        width: 100%;
+                        //order: 1;
+                    }
+
+                    ul{
+                        //order: 2;
+                    }
                 }
             }
         }

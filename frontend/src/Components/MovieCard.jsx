@@ -169,47 +169,49 @@
           ))}
         </ul>
       </section>
-      <section id="users">
-        <h2>I'm watching with...</h2>
-        <ul>
-          {users.slice(0, 10).map((user) => ( //when slicing we remove a piece from one array and into a new array, afte that we map trhough
-          //then using map it maps through the previous array and creates a new one withotu changign the old one. https://www.w3schools.com/jsref/jsref_map.asp#:~:text=map()%20creates%20a%20new,not%20change%20the%20original%20array.
-            <li key={user._id} onClick={() => userClick(user._id)}> 
-              {user.users}
-            </li>
-          ))}
-        </ul>
-      </section>
-      {selectedUser && (
-  <section id="comparison">
-    <h2>Comparison with {selectedUser.users}</h2>
-    <h3>Common Favorite Movies:</h3>
-    <ul>
-      {/* by filtering we filter through the info we gatehr from results
-      we then use .some to see if at least one element we called for provides the info, then using map we can create a new array
-      which allows for the previous arrays to stay unchanged. */}
-      {Results.filter(movie => favoriteMovies.some(favorite => favorite.title === movie.title)).map((movie, index) => (
-        <li key={index}>
-          <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer"> 
-            <img src={movie.image} alt={movie.title} style={{ maxWidth: '150px', maxHeight: '200px' }} /> 
-          </a>
-          <p>{movie.title}</p>
-        </li>
-      ))}
-    </ul>
-    <h3>Common Wishlist:</h3>
-    <ul> 
-      {Results.filter(movie => wishList.some(wishlist => wishlist.title === movie.title)).map((movie, index) => ( //STYLIGN NEEDS TO GOO
-        <li key={index}>
-          <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
-            <img src={movie.image} alt={movie.title} style={{ maxWidth: '150px', maxHeight: '200px' }} />
-          </a>
-          <p>{movie.title}</p>
-        </li>
-      ))}
-    </ul>
-  </section>
-)}
+      <div id='comparison-section'>
+        <section id="users">
+          <h2>I'm watching with...</h2>
+          <ul>
+            {users.slice(0, 10).map((user) => ( //when slicing we remove a piece from one array and into a new array, afte that we map trhough
+            //then using map it maps through the previous array and creates a new one withotu changign the old one. https://www.w3schools.com/jsref/jsref_map.asp#:~:text=map()%20creates%20a%20new,not%20change%20the%20original%20array.
+              <li key={user._id} onClick={() => userClick(user._id)}> 
+                {user.users}
+              </li>
+            ))}
+          </ul>
+        </section>
+        {selectedUser && (
+    <section id="comparison">
+      <h2>Comparison with {selectedUser.users}</h2>
+      <h3>Common Favorite Movies:</h3>
+      <ul>
+        {/* by filtering we filter through the info we gatehr from results
+        we then use .some to see if at least one element we called for provides the info, then using map we can create a new array
+        which allows for the previous arrays to stay unchanged. */}
+        {Results.filter(movie => favoriteMovies.some(favorite => favorite.title === movie.title)).map((movie, index) => (
+          <li key={index}>
+            <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer"> 
+              <img src={movie.image} alt={movie.title} /> 
+            </a>
+            <p>{movie.title}</p>
+          </li>
+        ))}
+      </ul>
+      <h3>Common Wishlist:</h3>
+      <ul> 
+        {Results.filter(movie => wishList.some(wishlist => wishlist.title === movie.title)).map((movie, index) => (
+          <li key={index}>
+            <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
+              <img src={movie.image} alt={movie.title} />
+            </a>
+            <p>{movie.title}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+    )}
+</div>
   </>
   )
 }
