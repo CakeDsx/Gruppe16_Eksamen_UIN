@@ -118,7 +118,8 @@
       }
 
       const userData = await response.json()
-      const userFavMovies = userData.result[0]?.favoriteMovies || []
+      const userFavMovies = userData.result[0]?.favoriteMovies || [] //using || here tells the code to return the userData.result aka the favorite movies if its true, and if its not true, it shoudl show nothing in thi case
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
       const userWishList = userData.result[0]?.wishList || []
 
       const FavMovie = favoriteMovies.filter((movie) =>
@@ -155,7 +156,7 @@
             </li>
           ))}
         </ul>
-        <h2 id="favorites">Your favorite movies!</h2>
+        <h2 id="favorites">Your Favorite movies!</h2>
         <p>Favorites:</p>
         <ul>
           {favoriteMovies.map((movie, index) => (
@@ -171,8 +172,9 @@
       <section id="users">
         <h2>I'm watching with...</h2>
         <ul>
-          {users.slice(0, 10).map((user) => ( //remember to explain the use of slice
-            <li key={user._id} onClick={() => userClick(user._id)}>
+          {users.slice(0, 10).map((user) => ( //when slicing we remove a piece from one array and into a new array, afte that we map trhough
+          //then using map it maps through the previous array and creates a new one withotu changign the old one. https://www.w3schools.com/jsref/jsref_map.asp#:~:text=map()%20creates%20a%20new,not%20change%20the%20original%20array.
+            <li key={user._id} onClick={() => userClick(user._id)}> 
               {user.users}
             </li>
           ))}
@@ -183,7 +185,10 @@
     <h2>Comparison with {selectedUser.users}</h2>
     <h3>Common Favorite Movies:</h3>
     <ul>
-      {Results.filter(movie => favoriteMovies.some(favorite => favorite.title === movie.title)).map((movie, index) => (//STYLIGN NEEDS TO GOO
+      {/* by filtering we filter through the info we gatehr from results
+      we then use .some to see if at least one element we called for provides the info, then using map we can create a new array
+      which allows for the previous arrays to stay unchanged. */}
+      {Results.filter(movie => favoriteMovies.some(favorite => favorite.title === movie.title)).map((movie, index) => (
         <li key={index}>
           <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer"> 
             <img src={movie.image} alt={movie.title} style={{ maxWidth: '150px', maxHeight: '200px' }} /> 

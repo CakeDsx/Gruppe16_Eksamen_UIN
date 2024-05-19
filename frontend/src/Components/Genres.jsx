@@ -22,9 +22,9 @@ export default function Genres() {
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[_type == "kategori"]{_id, Genre, "movies": *[_type == "movie" && references(^._id)]{_id, title}}', //with these types we had tried to do the stuff that we found in lego dudes, but we didnt have any success,
-          }), //so we decided that this would be the best option for our code moving froward beacsue we felt very stuck. 
-        }) //we know we should have been able to set this stuff into sanity services and make that work, but we used to long on that. 
+            query: '*[_type == "kategori"]{_id, Genre, "movies": *[_type == "movie" && references(^._id)]{_id, title}}', 
+          }), //this code allows us to specify what we want from the movies dataset in our Sanity project
+        }) 
 
         if (!response.ok) {
           throw new Error('Failed to fetch genre info')
@@ -32,7 +32,7 @@ export default function Genres() {
 
         const userData = await response.json()
         setGenres(userData.result)
-        setisStarSolid(new Array(userData.result.length).fill(false))
+        setisStarSolid(new Array(userData.result.length).fill(false)) //checks if the star is solid
       } catch (error) {
         console.error('Error', error)
         setError(error.message)
@@ -42,7 +42,8 @@ export default function Genres() {
     fetchGenres()
   }, [])
 
-  const toggleStar = (index) => {
+  const toggleStar = (index) => { //this was originaly used to change the star in the genres page to be filled in when clicked on, but 
+    //somewhat stopped workign as we added the function to be able to see movie names as you click on the different genres
     const updatedStars = [...isStarSolid]
     updatedStars[index] = !updatedStars[index]
     setisStarSolid(updatedStars)
@@ -59,7 +60,7 @@ export default function Genres() {
         },
         body: JSON.stringify({
           query: '*[_type == "kategori" && Genre == $genre]{_id, Genre, "movies": *[_type == "movie" && references(^._id)]{_id, title}}',
-          params: { genre: genre.Genre },
+          params: { genre: genre.Genre }, //here we are calling the movies and genres to be able to connect the differen genres to the different movies
         }),
       })
 
@@ -82,7 +83,8 @@ export default function Genres() {
       <ul>
         {genres.map((genre, index) => (
           <li key={genre._id}>
-            <button onClick={() => genClick(genre)}>
+            <button onClick={() => genClick(genre)}> 
+            {/* here we see what is being used as a user clicks the button to see what movies are in what genre. */}
               {genre.Genre}
               <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} /> 
               {/* updates the code if the button has been clciked */}

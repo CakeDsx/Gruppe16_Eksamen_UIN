@@ -13,7 +13,8 @@ export default function Navbar() {
             <Title />
             <ul> 
                 <li className="what-to-see">
-                    <Link to={`/Home/${userId}`}>What to watch</Link>
+                    <Link to={`/Home/${userId}`}>What to watch</Link> 
+                    {/* connects the home button to be set as the user Id that ahs been picked when entering in with the frontpage */}
                 </li>
                 <li>  
                     <Link to={`/Genres/${userId}`}>Genres</Link>
