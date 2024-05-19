@@ -25,7 +25,7 @@ export default {
       name: "favoriteMovies",
       title: "FavoriteMovies",
       type: "array",
-      of: [{type: 'reference', to:{type: 'movie'}}]
+      of: [{type: 'reference', to:{type: 'movie'}}] // connects the favorite movies you can see on a user to the movie schema
     },
     {
       name: "wishList",
