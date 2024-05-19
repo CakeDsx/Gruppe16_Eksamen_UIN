@@ -18,7 +18,7 @@
             'Content-Type': 'application/json',
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
-          body: JSON.stringify({
+          body: JSON.stringify({ // the use of JSON here was inspired by the stuff we did at school, but the upset of this code was taken from https://dev.to/ldakanno/making-a-post-request-using-json-server-h7c
             query: '*[_type == "Users" && _id != $userId]{_id, users}',
             params: { userId },
           }),
