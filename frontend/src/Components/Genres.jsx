@@ -6,25 +6,25 @@ import { faStar as fab } from '@fortawesome/free-regular-svg-icons'
 
 export default function Genres() {
   const [genres, setGenres] = useState([])
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null) //this we use to check if errors appear while testing. 
   const [selectedGenre, setSelectedGenre] = useState(null)
   const [movies, setMovies] = useState([])
   const [isStarSolid, setisStarSolid] = useState([])
-  library.add(fab, fas, far)
+  library.add(fab, fas, far) //this is simlply here to add a button that we didnt really get workign but will be explained in the document. 
 
   useEffect(() => {
     async function fetchGenres() {
       try {
-        const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
+        const response = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', { //fetches the info from our movies project
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json', //the line under retrievs our sanity token tha we made to be able to use it as a sort of API
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
-            query: '*[_type == "kategori"]{_id, Genre, "movies": *[_type == "movie" && references(^._id)]{_id, title}}',
-          }),
-        })
+            query: '*[_type == "kategori"]{_id, Genre, "movies": *[_type == "movie" && references(^._id)]{_id, title}}', //with these types we had tried to do the stuff that we found in lego dudes, but we didnt have any success,
+          }), //so we decided that this would be the best option for our code moving froward beacsue we felt very stuck. 
+        }) //we know we should have been able to set this stuff into sanity services and make that work, but we used to long on that. 
 
         if (!response.ok) {
           throw new Error('Failed to fetch genre info')
@@ -84,7 +84,8 @@ export default function Genres() {
           <li key={genre._id}>
             <button onClick={() => genClick(genre)}>
               {genre.Genre}
-              <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} />
+              <FontAwesomeIcon icon={isStarSolid[index] ? fas : fab} /> 
+              {/* updates the code if the button has been clciked */}
             </button>
           </li>
         ))}

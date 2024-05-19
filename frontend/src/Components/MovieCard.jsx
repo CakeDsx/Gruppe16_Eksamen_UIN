@@ -41,10 +41,10 @@
   useEffect(() => {
     async function fetchUserInfo(userId) {
       try {
-        const sanityResponse = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', {
+        const sanityResponse = await fetch('https://o9tavwx2.api.sanity.io/v1/data/query/movies', { //this si posting/fetchign the data we ahve put into the Sanity project called movies
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json', //this is our sanity API token
             Authorization: 'Bearer sk0EFmQ5LvIy6dAbCyLZenXHNmihZtMmVlXxPnDjWMcx8HP75BV0vwGpWgIFFBK4flk56xkPNy1KsGvCQjz8KZIxSCyK3hsqSnnhxGKUCw5QKcNBvUwg5iT9ahVAxjK7R8n350KQK8QrEyFEaw2f6LTbKxWe4rxl4zGJIB4OZQ8kYdq9wqio',
           },
           body: JSON.stringify({
@@ -64,7 +64,7 @@
         const fetchMovieData = async (movies) => {// Fetch movie data for favorite movies and wishlist
           const moviePromises = movies.map(async (movie) => {
             const title = movie.title
-            const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie`
+            const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie` //this is fetching data from the rapid API
             const options = {
               method: 'GET',
               headers: {
@@ -80,7 +80,7 @@
               id: data.results[0]?.id,
             }
           })
-          return Promise.all(moviePromises) //explain the sue of promise.all
+          return Promise.all(moviePromises) //returns all promsied objects specifiecd liek the oen above which is moviePromises, which si used in fetchMovieData
         }
 
         const favoriteMovieImage = await fetchMovieData(favoriteMovies)
@@ -98,7 +98,6 @@
     fetchUserInfo(userId)
   }, [userId])
 
-  // Handle user click
   const userClick = async (userId) => {
     setSelectedUser(users.find((user) => user._id === userId))
     try {
@@ -123,12 +122,12 @@
       const userWishList = userData.result[0]?.wishList || []
 
       const FavMovie = favoriteMovies.filter((movie) =>
-        userFavMovies.some((userMovie) => userMovie.title === movie.title) //remember to source chatGPT here for use of some
-      )
+        userFavMovies.some((userMovie) => userMovie.title === movie.title) //looking through some links about filter and some we came to this, links to this will eb added in the document.
+      ) //so filter here tests all elements that pass trough while some tests if one specfic thing is passing through.
 
-      const WishListM = wishList.filter((movie) => //rememebr to explain the use here of filer and .some
-        userWishList.some((userMovie) => userMovie.title === movie.title)
-      )
+      const WishListM = wishList.filter((movie) => 
+        userWishList.some((userMovie) => userMovie.title === movie.title) //for the filtering option we also saw somethign in legodudes that seemed to be a possible use, thsi was found : https://github.com/toremake/LEGODUDES_sanity/blob/main/frontend/src/components/Cart.jsx
+      ) //so we looked mroe into how we could change that code and decided to try to use some as that was something we hadnt used a lot before. 
 
       const generalMovies = [...FavMovie, ...WishListM] //explain waht this const does.
 
@@ -184,18 +183,18 @@
     <h2>Comparison with {selectedUser.users}</h2>
     <h3>Common Favorite Movies:</h3>
     <ul>
-      {Results.filter(movie => favoriteMovies.some(favorite => favorite.title === movie.title)).map((movie, index) => (
+      {Results.filter(movie => favoriteMovies.some(favorite => favorite.title === movie.title)).map((movie, index) => (//STYLIGN NEEDS TO GOO
         <li key={index}>
-          <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
-            <img src={movie.image} alt={movie.title} style={{ maxWidth: '150px', maxHeight: '200px' }} />
+          <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer"> 
+            <img src={movie.image} alt={movie.title} style={{ maxWidth: '150px', maxHeight: '200px' }} /> 
           </a>
           <p>{movie.title}</p>
         </li>
       ))}
     </ul>
     <h3>Common Wishlist:</h3>
-    <ul>
-      {Results.filter(movie => wishList.some(wishlist => wishlist.title === movie.title)).map((movie, index) => ( //remmeber to source chatGPT here as well fro
+    <ul> 
+      {Results.filter(movie => wishList.some(wishlist => wishlist.title === movie.title)).map((movie, index) => ( //STYLIGN NEEDS TO GOO
         <li key={index}>
           <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
             <img src={movie.image} alt={movie.title} style={{ maxWidth: '150px', maxHeight: '200px' }} />
