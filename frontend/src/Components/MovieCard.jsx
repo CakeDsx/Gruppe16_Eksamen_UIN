@@ -118,24 +118,24 @@
       }
 
       const userData = await response.json()
-      const userFavMovies = userData.result[0]?.favoriteMovies || [] //using || here tells the code to return the userData.result aka the favorite movies if its true, and if its not true, it shoudl show nothing in thi case
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
-      const userWishList = userData.result[0]?.wishList || []
+       const userFavMovies = userData.result[0]?.favoriteMovies || [] //using || here tells the code to return the userData.result aka the favorite movies if its true, and if its not true, it shoudl show nothing in thi case
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
+          const userWishList = userData.result[0]?.wishList || []
 
-      const FavMovie = favoriteMovies.filter((movie) =>
-        userFavMovies.some((userMovie) => userMovie.title === movie.title) //looking through some links about filter and some we came to this, links to this will eb added in the document.
-      ) //so filter here tests all elements that pass trough while some tests if one specfic thing is passing through.
+            const FavMovie = favoriteMovies.filter((movie) =>
+                userFavMovies.some((userMovie) => userMovie.title === movie.title) //looking through some links about filter and some we came to this, links to this will eb added in the document.
+            ) //so filter here tests all elements that pass trough while some tests if one specfic thing is passing through.
 
-      const WishListM = wishList.filter((movie) => 
-        userWishList.some((userMovie) => userMovie.title === movie.title) //for the filtering option we also saw somethign in legodudes that seemed to be a possible use, thsi was found : https://github.com/toremake/LEGODUDES_sanity/blob/main/frontend/src/components/Cart.jsx
-      ) //so we looked mroe into how we could change that code and decided to try to use some as that was something we hadnt used a lot before. 
+            const WishListM = wishList.filter((movie) => 
+                 userWishList.some((userMovie) => userMovie.title === movie.title) //for the filtering option we also saw somethign in legodudes that seemed to be a possible use, thsi was found : https://github.com/toremake/LEGODUDES_sanity/blob/main/frontend/src/components/Cart.jsx
+            ) //so we looked mroe into how we could change that code and decided to try to use some as that was something we hadnt used a lot before. 
 
-      const generalMovies = [...FavMovie, ...WishListM] //explain waht this const does.
+      const generalMovies = [...FavMovie, ...WishListM] //adds the two elements individually to a new array
 
-      setResults(generalMovies)
-    } catch (error) {
-      setError(error.message)
-    }
+        setResults(generalMovies)
+      } catch (error) {
+       setError(error.message)
+     }
   }
 
   if (loading) return <p>Loading...</p>
