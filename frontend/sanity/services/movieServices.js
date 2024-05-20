@@ -1,29 +1,3 @@
-// import client from "./client"
-
-// export async function fetchUsers() {
-//   try {
-//     const data = await client.fetch(`*[_type == "Users" && _id != $userId]{_id, users}`, {
-//       userId: "",
-//     })
-//     return data;
-//   } catch (error) {
-//     console.error("Error fetching users:", error)
-//     throw error
-//   }
-// }
-
-// export async function fetchUserInfo(userId) {
-//   try {
-//     const data = await client.fetch(`*[_type == "Users" && _id == $userId]{favoriteMovies[]->{title, id}, wishList[]->{title, id}}`, {
-//       userId,
-//     })
-//     return data[0]
-//   } catch (error) {
-//     console.error("Error fetching user info:", error)
-//     throw error
-//   }
-// }
-
 import client from "./client"
 
 
