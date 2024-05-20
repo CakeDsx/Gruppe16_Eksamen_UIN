@@ -306,6 +306,9 @@ body{
             margin: 0 2rem 0 0;
             display: flex;
             flex-wrap: wrap;
+            border: var(--black-color) solid 2px;
+            border-radius: 10px;
+            padding: 0 0 0 1rem;
 
             h2{
                 width: 100%;
