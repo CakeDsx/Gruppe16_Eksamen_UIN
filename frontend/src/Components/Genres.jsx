@@ -30,27 +30,6 @@ export default function Genres() {
           throw new Error('Failed to fetch genre info')
         }
 
-        const fetchMovieData = async (movies) => {// Fetch movie data for favorite movies and wishlist
-            const moviePromises = movies.map(async (movie) => {
-              const title = movie.title
-              const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie` //this is fetching data from the rapid API
-              const options = {
-                method: 'GET',
-                headers: {
-                  'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
-                  'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-                },
-              }
-              const response = await fetch(url, options)
-              const data = await response.json()
-              return {
-                title,
-                image: data.results[0]?.primaryImage?.url,
-                id: data.results[0]?.id,
-              }
-            })
-            return Promise.all(moviePromises) //returns all promsied objects specifiecd liek the oen above which is moviePromises, which si used in fetchMovieData
-          }
 
         const userData = await response.json()
         setGenres(userData.result)
@@ -61,8 +40,31 @@ export default function Genres() {
       }
     }
 
+
     fetchGenres()
   }, [])
+
+  const fetchMovieData = async (movies) => {// Fetch movie data for favorite movies and wishlist
+    const moviePromises = movies.map(async (movie) => {
+      const title = movie.title
+      const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie` //this is fetching data from the rapid API
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
+          'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+        },
+      }
+      const response = await fetch(url, options)
+      const data = await response.json()
+      return {
+        title,
+        image: data.results[0]?.primaryImage?.url,
+        id: data.results[0]?.id,
+      }
+    })
+    return Promise.all(moviePromises) //returns all promsied objects specifiecd liek the oen above which is moviePromises, which si used in fetchMovieData
+  }
 
   const toggleStar = (index) => { //this was originaly used to change the star in the genres page to be filled in when clicked on, but 
     //somewhat stopped workign as we added the function to be able to see movie names as you click on the different genres
