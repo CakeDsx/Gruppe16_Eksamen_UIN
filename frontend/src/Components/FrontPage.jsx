@@ -49,9 +49,9 @@ export default function FrontPage() {
           {users.map((user, index) => ( //this maps the users into an array
             <article className="user-card" key={index}>
                 {/* here we add the icon to the user names */}
-              <h3><FontAwesomeIcon icon={faUser} /> {user.users}</h3> 
               {/* while picking a user we redirect it to go to the specified users ID when one is picked. */}
               <Link to={`/Home/${user._id}`} alt={user.users}>
+              <h3><FontAwesomeIcon icon={faUser} /> {user.users}</h3> 
                 {user.url && (
                   <img src={user.url} alt={user.users} />
                 )}

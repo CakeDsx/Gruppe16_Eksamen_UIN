@@ -126,8 +126,9 @@ export default function Genres() {
             <li key={index}>
               <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
                 <img src={movie.image} alt={movie.title} />
+                <p>{movie.title}</p>
+
               </a>
-              <p>{movie.title}</p>
             </li>
           ))}
         </ul>
