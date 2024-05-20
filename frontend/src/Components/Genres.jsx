@@ -30,6 +30,28 @@ export default function Genres() {
           throw new Error('Failed to fetch genre info')
         }
 
+        const fetchMovieData = async (movies) => {// Fetch movie data for favorite movies and wishlist
+            const moviePromises = movies.map(async (movie) => {
+              const title = movie.title
+              const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}?exact=true&titleType=movie` //this is fetching data from the rapid API
+              const options = {
+                method: 'GET',
+                headers: {
+                  'X-RapidAPI-Key': '9f75e199fdmsh83cedb74debc28bp168dbajsnc177f705dfed',
+                  'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+                },
+              }
+              const response = await fetch(url, options)
+              const data = await response.json()
+              return {
+                title,
+                image: data.results[0]?.primaryImage?.url,
+                id: data.results[0]?.id,
+              }
+            })
+            return Promise.all(moviePromises) //returns all promsied objects specifiecd liek the oen above which is moviePromises, which si used in fetchMovieData
+          }
+
         const userData = await response.json()
         setGenres(userData.result)
         setisStarSolid(new Array(userData.result.length).fill(false)) //checks if the star is solid
@@ -69,7 +91,8 @@ export default function Genres() {
       }
 
       const genreData = await response.json()
-      setMovies(genreData.result[0]?.movies || [])
+      const movieData = await fetchMovieData(genreData.result[0]?.movies || [])
+      setMovies(movieData)
     } catch (error) {
       console.error('Error fetching movies:', error)
       setError(error.message)
@@ -97,10 +120,15 @@ export default function Genres() {
           <>
             <h2>{selectedGenre.Genre}</h2>
             <ul>
-              {movies.map((movie) => (
-                <li key={movie._id}>{movie.title}</li>
-              ))}
-            </ul>
+          {movies.map((movie, index) => (
+            <li key={index}>
+              <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
+                <img src={movie.image} alt={movie.title} />
+              </a>
+              <p>{movie.title}</p>
+            </li>
+          ))}
+        </ul>
           </>
         )}
       </div>
