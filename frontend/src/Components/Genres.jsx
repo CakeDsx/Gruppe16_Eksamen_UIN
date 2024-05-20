@@ -121,7 +121,7 @@ export default function Genres() {
         {selectedGenre && (
           <>
             <h2>{selectedGenre.Genre}</h2>
-            <ul>
+            <ul id='genre-movies'>
           {movies.map((movie, index) => (
             <li key={index}>
               <a href={`https://www.imdb.com/title/${movie.id}/`} target="_blank" rel="noopener noreferrer">
