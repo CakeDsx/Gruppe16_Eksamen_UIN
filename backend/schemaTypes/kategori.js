@@ -3,15 +3,18 @@ export default {
     title: 'kategori',
     type: 'document',
     fields: [
+
       {
-        name: 'name',
-        title: 'kake',
+        
+        name: 'Genre',
+        title: 'Genre',
         type: 'string'
       },
-      {
-        name: "mengde",
-        title: "mengde/antall",
-        type: "string"
+    {
+      name: "moviekat",
+      title: "moviekat",
+      type: "array",
+      of: [{type: 'reference', to:{type: 'movie'}}]
     }
     ],
   }
